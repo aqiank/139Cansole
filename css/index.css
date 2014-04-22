@@ -103,8 +103,8 @@ h1, h2, h3, p, li {
     position: relative;
     width: 296px;
     height: 170px;
-    top: -338px;
-    left: 8px;
+    top: -348px;
+    left: 0px;
     visibility: hidden;
     -webkit-mask: url('../images/screen_mask.png') no-repeat;
     -moz-mask: url('../images/screen_mask.png') no-repeat;
