@@ -9,7 +9,7 @@
 html, body {
     width: 100%;
     height: 100%;
-    background-color: #222;
+    background-color: #f3f3f3;
 }
 
 h1, h2, h3, p, li {
@@ -383,6 +383,9 @@ h1, h2, h3, p, li {
 /************************
  * Transition: Product *
  ************************/
+#transition_product {
+    background: #f3f3f3;
+}
 #transition_product_a {
     position: relative;
     background: url('../images/transitions/t2_bg.jpg');
@@ -397,7 +400,7 @@ h1, h2, h3, p, li {
     background-position: center;
 }
 
-#transition-product-text p{
+#transition-product-text p {
     letter-spacing: 1px;
     font-size: 1.21em;
 }
