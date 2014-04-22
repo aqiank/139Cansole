@@ -162,17 +162,9 @@ $(document).ready(function() {
     /***********************
      * Transition: Product *
      ***********************/
-    scene = new ScrollScene({triggerElement: "#pin", duration: 2000, offset: 150, triggerHook: "onEnter"})
-                    .addTo(controller);
-    tween = new TimelineMax()
-                    .add(TweenMax.fromTo("#transition_product", 1, {y: -500}, {y: 0}))
-                    .add(TweenMax.to("#transition_product", 2, {y: 0}))
-                    .add(TweenMax.fromTo("#transition_product", 1, {y: 0}, {y: -500}));
-    scene.setTween(tween);
-
     scene = new ScrollScene({triggerElement: "#pin", duration: 500, offset: 150, triggerHook: "onEnter"})
                     .addTo(controller);
-    tween = TweenMax.fromTo("#transition_product_a", 1, {opacity: 0}, {opacity: 1});
+    tween = TweenMax.fromTo("#transition_product_a", 1, {y: -200, opacity: 0}, {ease: Quad.easeIn, y: 0, opacity: 1});
     scene.setTween(tween);
 
     scene = new ScrollScene({triggerElement: "#pin", duration: 2500, offset: 900, triggerHook: "onEnter"})
