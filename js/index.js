@@ -172,7 +172,7 @@ $(document).ready(function() {
     tween = TweenMax.fromTo("#transition-product-text", 1, {y: 500}, {y: -500});
     scene.setTween(tween);
 
-    scene = new ScrollScene({triggerElement: "#pin", duration: 200, offset: 1250, triggerHook: "onEnter"})
+    scene = new ScrollScene({triggerElement: "#pin", duration: 200, offset: 1350, triggerHook: "onEnter"})
                     .addTo(controller);
     tween = TweenMax.to("#transition_product_b", 1, {opacity: 0});
     scene.setTween(tween);
@@ -264,7 +264,7 @@ $(document).ready(function() {
                     .add(TweenMax.to("#app_content", 1, {alpha: 0}));
     scene.setTween(tween);
 
-    scene = new ScrollScene({triggerElement: "#pin", duration: 1000, offset: 4050, triggerHook: "onEnter"})
+    scene = new ScrollScene({triggerElement: "#pin", duration: 1000, offset: 4200, triggerHook: "onEnter"})
                     .addTo(controller);
     tween = new TimelineMax()
                     .add(TweenMax.to("#can_shadow_d", 1, {opacity: 1}))
