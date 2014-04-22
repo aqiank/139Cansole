@@ -1,0 +1,547 @@
+/***********
+ * General *
+ ***********/
+@font-face {
+	font-family: "Cabin";
+	src: url("../fonts/Cabin-Regular.otf");
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #222;
+}
+
+h1, h2, h3, p, li {
+	font-family: "Cabin";
+}
+
+#all {
+    width: 100%;
+}
+
+.main-container {
+    width: 100%;
+    height: 100%;
+}
+
+.last-container {
+    width: 100%;
+    height: 800px;
+}
+
+.container {
+    width: 100%;
+    height: 620px;
+}
+
+.content {
+    width: 960px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.layer1 {
+    z-index: 1;
+}
+
+.layer2 {
+    z-index: 2;
+}
+
+.layer3 {
+    z-index: 3;
+}
+
+.inline-center {
+    text-align: center;
+}
+
+.hcenter {
+    display: inline-block;
+}
+
+.table {
+        width: 100%;
+        height: 100%;
+        display: table;
+}
+
+.vcenter {
+        display: table-cell;
+        vertical-align: middle;
+        height: 100%;
+}
+
+.vbottom {
+        display: table-cell;
+        vertical-align: bottom;
+        height: 100%;
+}
+
+/*************
+ * Animation *
+ ************/
+#animation_container {
+    position: fixed;
+}
+
+#animation {
+    background: rgba(0, 0, 0, 0);
+    padding-top: 50px;
+}
+
+#animation img {
+    position: fixed;
+}
+
+.animation_frame {
+    position: fixed;
+}
+
+#screenshots {
+    position: relative;
+    width: 296px;
+    height: 170px;
+    top: -388px;
+    left: 8px;
+    visibility: hidden;
+    -webkit-mask: url('../images/screen_mask.png') no-repeat;
+    -moz-mask: url('../images/screen_mask.png') no-repeat;
+    -o-mask: url('../images/screen_mask.png') no-repeat;
+    mask: url('../images/screen_mask.png') no-repeat;
+    -webkit-mask-size: cover;
+    -moz-mask-size: cover;
+    -o-mask-size: cover;
+    mask-size: cover;
+}
+
+#screen1 {
+    position: absolute;
+    background: url('../images/5_market/app2.jpg');
+    width: 296px;
+    height: 170px;
+    left: 296px;
+}
+
+#screen2 {
+    position: absolute;
+    background: url('../images/5_market/app3.jpg');
+    width: 296px;
+    height: 170px;
+    left: 296px;
+}
+
+#screen3 {
+    position: absolute;
+    background: url('../images/5_market/app4.jpg');
+    width: 296px;
+    height: 170px;
+    left: 296px;
+}
+
+.transition {
+    position: relative;
+}
+
+.transition-text {
+    position: absolute;
+    color: #f3f3f3;
+}
+
+.transition-text-container {
+    width: 660px;
+    margin: 0 auto;
+}
+
+.transition-text-container > p {
+    font-size: 1.25em;
+    line-height: 1.5em;
+}
+
+/**********
+ * Navbar *
+ **********/
+#navbar {
+    position: fixed;
+    width: 100%;
+    height: 64px;
+    background: rgba(0, 0, 0, 0);
+    z-index: 100;
+}
+
+#logo {
+    float: left;
+    margin: 20px;
+}
+
+#navbar ul {
+    float: right;
+}
+
+#navbar li {
+    float: left;
+    text-align: center;
+    margin: 24px 16px;
+}
+
+#navbar a {
+    color: #f3f3f3;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#navbar li div {
+    height: 100%;
+}
+
+#navbar p {
+    position: relative;
+    margin-top: -14px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+#navbar_bg {
+    position: fixed;
+    width: 100%;
+    height: 64px;
+    z-index: 99;
+    background: #222222;
+    top: -100px;
+}
+
+/*******************
+ * Page Indicators *
+ *******************/
+#page-indicators {
+    position: fixed;
+    top: 50%;
+    right: 1%;
+}
+
+.page-indicator {
+    display: block;
+    position: relative;
+    opacity: 0.2;
+}
+
+.page-indicator img {
+    display: inline-block;
+    clear: both;
+    float: right;
+}
+
+.page-indicator p {
+    display: inline-block;
+    opacity: 0;
+    float: right;
+    font-size: 0.6em;
+    color: #f00;
+}
+
+#home_button_image {
+    background: url('../images/navbar/icon_home_grey.png') no-repeat center 8px;
+}
+
+/***********
+ * Anchors *
+ ***********/
+#home_trigger {
+    position: relative;
+    top: 0px;
+}
+ 
+#about_trigger {
+    position: relative;
+    top: 750px;
+}
+ 
+#product_trigger {
+    position: relative;
+    top: 2550px;
+}
+ 
+#app_trigger {
+    position: relative;
+    top: 4300px;
+}
+ 
+#market_trigger {
+    position: relative;
+    top: 6200px;
+}
+
+/********
+ * Home *
+ ********/
+#home {
+    background: url('../images/1_home/bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+#home_content {
+    color: #fefefe;
+    padding-top: 144px;
+    margin: 0 16px;
+}
+
+#home_headline {
+    font-size: 2.5em;
+    margin: 8px;
+    font-weight: bold;
+}
+
+#home_description {
+    font-size: 1.3em;
+    margin: 8px;
+    padding: 8px;
+    border: 2px solid white;
+}
+
+#home_text {
+    position: relative;
+    width: 600px;
+    top: 64px;
+}
+
+#supporters {
+    position: relative;
+    top: 240px;
+    left: 100px;
+}
+
+#supporters p, img {
+    color: #222222;
+    margin: 8px;
+    float: left;
+}
+
+.step {
+    float: left;
+    margin: 0 16px;
+}
+
+.step p {
+    width: 160px;
+    color: #fefefe;
+    line-height: 1.35em;
+    font-size: 0.8em;
+}
+
+#steps {
+    margin: 270px 0 0 0;
+}
+
+#steps p {
+    color: #222;
+}
+
+/*********
+ * About *
+ *********/
+#about {
+    background: #f3f3f3;
+}
+
+#about_content {
+    color: #222222;
+    width: 360px;
+    padding-top: 216px;
+    margin: 16px;
+}
+
+#about_headline {
+    font-size: 2em;
+    line-height: 1.5em;
+    font-weight: bold;
+}
+
+#about_description {
+    line-height: 1.75em;
+    font-size: 1.05em;
+}
+
+/************************
+ * Transition: Product *
+ ************************/
+#transition_product_a {
+    position: relative;
+    background: url('../images/transitions/t2_bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+#transition_product_b {
+    position: relative;
+    background: url('../images/transitions/t1_bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/*********
+ * Product *
+ *********/
+#product {
+    background: #f3f3f3;
+}
+
+#product_content {
+    position: relative;
+    color: #222222;
+    width: 500px;
+    margin: 16px;
+    top: -580px;
+}
+
+#product_headline {
+    line-height: 1.75em;
+    font-size: 1.05em;
+}
+
+#product_description {
+    font-size: 2em;
+    line-height: 1.5em;
+    font-weight: bold;
+}
+
+
+/************************
+ * Transition: App *
+ ************************/
+#transition_app {
+    background: url('../images/transitions/app/longbg.jpg');
+    overflow: hidden;
+}
+
+#transition_app_images img {
+    margin: 0px;
+}
+
+/*******
+ * App *
+ *******/
+#app {
+    background: url('../images/4_app/bg.jpg');
+    background-size: cover;
+    background-position: center bottom;
+}
+
+#app_content {
+    position: relative;
+    top: -770px;
+    width: 460px;
+    padding-top: 160px;
+}
+
+#app_headline {
+    color: #222222;
+    font-size: 2.1em;
+    line-height: 1.25em;
+    font-weight: bold;
+}
+
+#app_description {
+    color: #222222;
+    line-height: 1.75em;
+    font-size: 1em;
+}
+
+/**********************
+ * Transition: Market *
+ **********************/
+#transition_market_content_a, #transition_market_content_b {
+    position: absolute;
+    width: 480px;
+    top: 160px;
+}
+
+#transition_market_headline_a {
+    color: #f3f3f3;
+    line-height: 1.75em;
+    font-size: 1.2em;
+    margin-top: 64px;
+    font-weight: bold;
+}
+
+#transition_market_description_a {
+    color: #f3f3f3;
+    font-size: 2.5em;
+    line-height: 1.5em;
+    font-weight: bold;
+}
+
+#transition_market_headline_b {
+    color: #222222;
+    line-height: 1.75em;
+    font-size: 1.2em;
+    margin-top: 64px;
+    font-weight: bold;
+}
+
+#transition_market_description_b {
+    color: #222222;
+    font-size: 2.5em;
+    line-height: 1.5em;
+    font-weight: bold;
+}
+
+#transition_market_a {
+    position: absolute;
+    background: url('../images/transitions/market/bg2.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+#transition_market_b {
+    position: absolute;
+    background: url('../images/transitions/market/bg1.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+#market_animation_frames {
+    position: absolute;
+}
+
+.market_animation_frame {
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+    margin: 0px 16px;
+}
+
+#market {
+    background: url('../images/5_market/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#market_content {
+    position: relative;
+    top: -900px;
+    left: -460px;
+}
+
+#market_content p {
+    line-height: 1.5em;
+    color: #f3f3f3;
+    opacity: 0;
+}
+
+#footer {
+    background: #222;
+    width: 100%;
+}
+
+#footer p {
+    color: #f3f3f3;
+    font-size: 0.7em;
+}
+
+#footer-text {
+    width: 100%;
+    padding: 16px;
+}

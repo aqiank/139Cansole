@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="css/reset.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/TweenMax.min.js"></script>
+    <script type="text/javascript" src="js/TimelineMax.min.js"></script>
+    <script type="text/javascript" src="js/jquery.scrollmagic.min.js"></script>
+    <script type="text/javascript" src="js/ScrollToPlugin.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+    <!-- Animation -->
+    <div id="animation_container" class="container layer1">
+        <div id="animation" class="content">
+            <img id="can_shadow_a" src="images/1_home/shadow.png" style="opacity: 0">
+            <img id="can_shadow_b" src="images/2_about/shadow.png" style="opacity: 0">
+            <img id="can_shadow_c" src="images/3_product/shadow.png" style="opacity: 0">
+            <img id="can_shadow_d" src="images/4_app/shadow.png" style="opacity: 0">
+            <img id="can_shadow_e" src="images/5_market/shadow.png" style="opacity: 0">
+            <div id="animation_frames">
+                <!-- Can animation frames will be added here via Javascript -->
+            </div>
+            <img id="teensy" src="images/3_product/teensy.png" style="opacity: 0">
+            <img id="bluetooth" src="images/3_product/bluetooth.png" style="opacity: 0">
+            <img id="sdcard" src="images/3_product/sdcard.png" style="opacity: 0">
+            <img id="lipo" src="images/3_product/lipo.png" style="opacity: 0">
+            <img id="charger" src="images/3_product/charger.png" style="opacity: 0">
+
+            <!-- About content -->
+            <div id="about_content">
+                <div id="about_text" class="inline-center">
+                    <span class="hcenter">
+                        <h1 id="about_headline">A GAMING CONSOLE INSIDE A CAN OF COKE</h1>
+                        <p id="about_description">
+                            139 CANSOLE IS THE WORLD'S FIRST GAMING CONSOLE DELIVERED TO THE USERS
+                            THROUGH VENDING MACHINES SPREAD AROUND THE WORLD.
+                        </p>
+                    </span>
+                </div>
+            </div>
+            
+            <!-- Screenshots --> <div id="screenshots" class="content"> <div id="screen1"></div> <div id="screen2"></div>
+                <div id="screen3"></div>
+            </div>
+            
+            <!-- Product content -->
+            <div id="product_content">
+                <div id="product_text" class="inline-center">
+                    <span class="hcenter">
+                        <p id="product_headline">OPEN SOURCE PLATFORM</p>
+                        <h1 id="product_description">BUILD YOUR OWN CONSOLE</h1>
+                    </span>
+                </div>
+            </div>
+             
+            <!-- App Content -->
+            <div id="app_content">
+                <div class="table">
+                    <div class="vcenter inline-center">
+                        <span class="hcenter">
+                            <h1 id="app_headline">DOWNLOAD 139 CANSOLE</h1>
+                            <p id="app_description">
+                                    BY USING A MOBILE PHONE AS THE SCREEN, IT BECOMES A PORTABLE
+                                    GAMING PLATFORM AND CONTROLLER THAT USERS CAN DEVELOP FOR AND
+                                    PLAY GAMES ON.
+                            </p>
+                            <!--<img style="left: 160px; margin-top: 16px;" src="images/4_app/app_icon.png">-->
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Market content -->
+            <div id="market_content">
+                <div id="market_text" class="inline-center">
+                        <p id="text1">SEARCH GAMES ON 139 GAMES MARKET</p>
+                        <p id="text2">CHOOSE YOUR FAVORITE GAME</p>
+                        <p id="text3">GAME PLAY</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <!-- Navbar -->
+    <div id="navbar_bg"></div>
+    <div id="navbar">
+        <div class="content">
+            <a href="index.html"><img id="logo" src="images/navbar/logo.png"></a>
+            <ul>
+                <li><a href="#home_trigger">HOME</a></li>
+                <li><a href="#about_trigger">ABOUT</a></li>
+                <li><a href="#product_trigger">PRODUCT</a></li>
+                <li><a href="#app_trigger">DOWNLOAD</a></li>
+                <li><a href="#market_trigger">MARKET</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Page Indicators -->
+    <div id="page-indicators" class="layer2">
+        <a id="home-indicator" class="page-indicator" href="#home_trigger">
+            <div class="table">
+                <div class="vcenter">
+                    <p>HOME</p>
+                </div>
+                <img src="images/navbar/home.png">
+            </div>
+        </a>
+        <a id="about-indicator" class="page-indicator" href="#about_trigger">
+            <div class="table">
+                <div class="vcenter">
+                    <p>ABOUT</p>
+                </div>
+                <img src="images/navbar/about.png">
+            </div>
+        </a>
+        <a id="product-indicator" class="page-indicator" href="#product_trigger">
+            <div class="table">
+                <div class="vcenter">
+                    <p>PRODUCT</p>
+                </div>
+                <img src="images/navbar/product.png">
+            </div>
+        </a>
+        <a id="app-indicator" class="page-indicator" href="#app_trigger">
+            <div class="table">
+                <div class="vcenter">
+                    <p>DOWNLOAD</p>
+                </div>
+                <img src="images/navbar/download.png">
+            </div>
+        </a>
+        <a id="market-indicator" class="page-indicator" href="#market_trigger">
+            <div class="table">
+                <div class="vcenter">
+                    <p>MARKET</p>
+                </div>
+                <img src="images/navbar/market.png">
+            </div>
+        </a>
+    </div>
+
+    <!-- Anchors for navigation -->
+    <div id="home_trigger"></div>
+    <div id="about_trigger"></div>
+    <div id="product_trigger"></div>
+    <div id="app_trigger"></div>
+    <div id="market_trigger"></div>
+
+    <!-- Slides -->
+    <div id="pin"></div>
+    <div id="all">
+
+        <!-- Home -->
+        <div id="home" class="container">
+            <div class="content">
+                <div id="home_content">
+                    <div id="home_text" class="inline-center">
+                        <p style="font-size: 1.25em">INTRODUCING 139 CANSOLE</p>
+                        <h1 id="home_headline">GAMING FOR EVERYONE</h1>
+                        <span class="hcenter">
+                            <p id="home_description">SIGN UP</p>
+                        </span>
+                    </div>
+                    <div id="supporters">
+                        <p>PRESENTED BY</p>
+                        <img src="images/1_home/coke.png">
+                        <img src="images/1_home/bbh.png">
+                        <img src="images/1_home/gingee.png">
+                    </div>
+                    <div class="inline-center">
+                        <span id="steps" class="hcenter">
+                            <div class="step" id="step1">
+                                <img src="images/2_about/step1.png">
+                                <p class="step_desc">GET YOUR CANSOLE FROM COKE VENDING MACHINE</p>
+                            </div>
+                            <div class="step" id="step2">
+                                <img src="images/2_about/step2.png">
+                                <p class="step_desc">CONNECT YOUR MOBILE TO CANSOLE</p>
+                            </div>
+                            <div class="step" id="step3">
+                                <img src="images/2_about/step3.png">
+                                <p class="step_desc">START PLAYING MICRO GAMES WITH CANSOLE</p>
+                            </div>
+                            <div class="step" id="step4">
+                                <img src="images/2_about/step4.png">
+                                <p class="step_desc">CREATE YOUR OWN GAMES WITH GINGEE SOFTWARE</p>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About -->
+        <div id="about" class="container">
+        </div>
+
+        <!-- Transition: Product -->
+        <div id="transition_product_a" class="container layer1 transition">
+            <div id="transition-product-text" class="transition-text table layer2">
+                <div class="vcenter">
+                    <div class="transition-text-container inline-center">
+                        <p>
+                            WE'VE TURNED CALORIES INTO BYTES TO CREATE THE LARGEST PLATFORM OF MICRO GAMES
+                            CREATED BY ANYONE. FOR EVERYONE.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="transition_product_b" class="container"></div>
+        </div>
+
+        <!-- Product -->
+        <div id="product" class="container"></div>
+        
+        <!-- Transition: App -->
+        <div id="transition_app" class="container layer1 transition">
+        </div>
+
+        <!-- App -->
+        <div id="app" class="container">
+            <div class="content">
+            </div>
+        </div>
+        
+        <!-- Transition: Market -->
+        <div id="transition_market" class="container">
+            <div id="transition_market_a" class="container layer1 transition">
+                <div class="content">
+                    <div id="transition_market_content_a">
+                        <div class="inline-center">
+                            <span class="hcenter">
+                                <h1 id="transition_market_headline_a">COMING SOON</h1>
+                                <p id="transition_market_description_a">
+                                    139 GAMES MARKET
+                                </p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="transition_market_b" class="container layer1">
+                <div class="content">
+                    <div id="transition_market_content_b">
+                        <div class="inline-center">
+                            <span class="hcenter">
+                                <h1 id="transition_market_headline_b">COMING SOON</h1>
+                                <p id="transition_market_description_b">
+                                    139 GAMES MARKET
+                                </p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="market_animation_frames" class="container layer1">
+                <!-- Market animation frames will be added here via Javascript -->
+            </div>
+        </div>
+
+        <!-- Market -->
+        <div id="market" class="last-container">
+            <div class="content">
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div id="footer">
+            <div class="content">
+                <img src="images/footer/fb.png">
+                <img src="images/footer/twitter.png">
+                <div id="footer-text">
+                    <div class="inline-center">
+                        <p>TERMS | PRIVACY POLICY @ 2014 139 CANSOLE. PRESENTED BY COCA COLA. BBH. GINGEE</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+</body>
+</html>
