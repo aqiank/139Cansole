@@ -104,7 +104,7 @@ h1, h2, h3, p, li {
     width: 296px;
     height: 170px;
     top: -348px;
-    left: 0px;
+    left: -90px;
     visibility: hidden;
     -webkit-mask: url('../images/screen_mask.png') no-repeat;
     -moz-mask: url('../images/screen_mask.png') no-repeat;
