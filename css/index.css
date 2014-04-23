@@ -336,6 +336,7 @@ h1, h2, h3, p, li {
 .step {
     float: left;
     margin: 0 16px;
+    
 }
 
 .step p {
@@ -416,7 +417,7 @@ h1, h2, h3, p, li {
     position: relative;
     color: #222222;
     width: 500px;
-    top: -490px;
+    top: -510px;
     left: 20px;
 }
 

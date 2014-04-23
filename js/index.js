@@ -167,7 +167,7 @@ $(document).ready(function() {
     tween = TweenMax.fromTo("#transition_product_a", 1, {y: -200, opacity: 0}, {ease: Quad.easeIn, y: 0, opacity: 1});
     scene.setTween(tween);
 
-    scene = new ScrollScene({triggerElement: "#pin", duration: 2500, offset: 900, triggerHook: "onEnter"})
+    scene = new ScrollScene({triggerElement: "#pin", duration: 5000, offset: 900, triggerHook: "onEnter"})
                     .addTo(controller);
     tween = TweenMax.fromTo("#transition-product-text", 1, {y: 100}, {y: -900});
     scene.setTween(tween);
