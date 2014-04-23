@@ -1,53 +1,75 @@
-/* ScrollMagic Controller */
+// ScrollMagic Controller
 var controller;
 
-/* Can Animation Frame Index */
-var index = 0;
-var prevIndex = 0;
+// Can Animation Frame Index
+var can_frame_index = 0;
+var previous_can_frame_index = 0;
 
-/* Market Animation Frame Index */
-var marketIndex = 0;
-var marketPrevIndex = 0;
+// Market Animation Frame Index
+var market_frame_index = 0;
+var market_previous_frame_index = 0;
 
-/* Page Indicator */
+// Page Indicator
 var activeIndicatorId = null;
 
-/* Screenshot Animation */
+// Screenshot Animation
 var screenshotPlaying = false;
 
-function prepareAnimationFrames() {
-    var idx = 0;
+function StopMotionAnimation(container, path, type, count) {
+    this.container = container;
+    this.path = path;
+    this.type = count;
 
-    /* prepare Can animation frames */
-    while (idx++ < 117) {
-        if (idx == 1) {
-            $('#animation_frames').append('<img class="animation_frame" id="animation_frame_' + (idx - 1) +
-                                   '" src="images/animations/' + idx + '.png">');
-        } else {
-            $('#animation_frames').append('<img class="animation_frame" id="animation_frame_' + (idx - 1) +
-                                   '" src="images/animations/' + idx +'.png" style="visibility: hidden">');
-        }
+    var frame_index = 1;
+    while (frame_index <= count) {
+        var element = $(container + ' img:nth-child(' + frame_index + ')');
+        var image_file = path + frame_index + type;
+
+        if (frame_index > 1)
+            element.hide();
+        element.load().attr('src', image_file);
+
+        frame_index++;
+    }
+}
+
+function prepareAnimationFrames() {
+    var frame_index = 1;
+
+    new StopMotionAnimation('#animation-frames', 'images/animations/', '.png', 117);
+    // Prepare can animation frames
+    while (frame_index <= 117) {
+        var element = $('#animation-frames img:nth-child(' + frame_index + ')');
+        var image_file = 'images/animations/' + frame_index + '.png';
+
+        if (frame_index > 1)
+            element.hide();
+        element.load().attr('src', image_file);
+
+        frame_index++;
     }
     
-    /* prepare Market animation frames */
-    idx = 0;
-    while (idx++ < 10) {
-        if (idx == 1) {
-            $('#market_animation_frames').append('<img class="market_animation_frame" id="market_animation_frame_' + (idx - 1) +
-                                   '" src="images/transitions/market/' + idx + '.png">');
-        } else {
-            $('#market_animation_frames').append('<img class="market_animation_frame" id="market_animation_frame_' + (idx - 1) +
-                                   '" src="images/transitions/market/' + idx + '.png" style="visibility: hidden">');
-        }
+    // Prepare Market animation frames
+    frame_index = 1;
+    
+    while (frame_index <= 10) {
+        var element = $('#market-animation-frames img:nth-child(' + frame_index + ')');
+        var image_file = 'images/transitions/market/' + frame_index + '.png';
+
+        if (frame_index > 1)
+            element.hide();
+        element.load().attr('src', image_file);
+
+        frame_index++;
     }
 }
 
 function gotoCanAnimationIndex(idx) {
-    prevIndex = index;
-    index = idx;
-    if (index != prevIndex) {
-        $('#animation_frame_' + index).css('visibility', 'visible');
-        $('#animation_frame_' + prevIndex).css('visibility', 'hidden');
+    previous_index = index;
+    index = idx + 1;
+    if (index != previous_index) {
+        $('#animation-frames img:nth-child(' + index + ')').show();
+        $('#animation-frames img:nth-child(' + previous_index + ')').hide();
     }
 }
 
@@ -288,11 +310,11 @@ $(document).ready(function() {
     scene = new ScrollScene({triggerElement: "#pin", duration: 250, offset: 4900, triggerHook: "onEnter"})
                     .addTo(controller)
                     .on("progress", function(e) {
-                        marketPrevIndex = marketIndex;
-                        marketIndex = Math.floor(e.progress * 9);
-                        if (marketIndex != marketPrevIndex) {
-                            $('#market_animation_frame_' + marketIndex).css('visibility', 'visible');
-                            $('#market_animation_frame_' + marketPrevIndex).css('visibility', 'hidden');
+                        market_previous_frame_index = market_frame_index;
+                        market_frame_index = Math.floor(e.progress * 9);
+                        if (market_frame_index != market_previous_frame_index) {
+                            $('#market-animation-frames img:nth-child(' +  + market_frame_index).css('visibility', 'visible');
+                            $('#market-animation-frame-' + market_previous_frame_index).css('visibility', 'hidden');
                         }
                     });
      

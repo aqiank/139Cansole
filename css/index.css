@@ -82,7 +82,7 @@ h1, h2, h3, p, li {
 /*************
  * Animation *
  ************/
-#animation_container {
+#animation-container {
     position: fixed;
 }
 
@@ -95,7 +95,7 @@ h1, h2, h3, p, li {
     position: fixed;
 }
 
-.animation_frame {
+.animation-frame {
     position: fixed;
 }
 
