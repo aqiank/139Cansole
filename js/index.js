@@ -77,7 +77,7 @@ function addStepsScene() {
 $(document).ready(function() {
     progress_bar = new ProgressBar(127,
                                    function(progress) {
-                                       $('#progress p').html("" + (progress * 100) + "%");
+                                       $('#progress p').html("" + Math.round(progress * 100) + "%");
                                        TweenMax.to('#loading-can-switch', 5, {rotation: "" + (180 * progress), transformOrigin: "center 75%"});
                                    },
                                    function() {
