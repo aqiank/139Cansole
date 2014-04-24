@@ -10,14 +10,12 @@ var can_animation;
 // Market Animation
 var market_animation;
 
->>>>>>> Stashed changes
 // Page Indicator
 var activeIndicatorId = null;
 
 // Screenshot Animation
 var screenshotPlaying = false;
 
-=======
 function ProgressBar(num_objects, on_increment, on_complete) {
     this.num_objects = num_objects;
     this.num_loaded_objects = 0;
