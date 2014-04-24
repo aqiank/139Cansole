@@ -1,13 +1,14 @@
 // ScrollMagic Controller
 var controller;
 
-// Can Animation Frame Index
-var can_frame_index = 0;
-var previous_can_frame_index = 0;
+// Progress Bar
+var progress_bar;
 
-// Market Animation Frame Index
-var market_frame_index = 0;
-var market_previous_frame_index = 0;
+// Can Animation
+var can_animation;
+
+// Market Animation
+var market_animation;
 
 // Page Indicator
 var activeIndicatorId = null;
@@ -15,61 +16,48 @@ var activeIndicatorId = null;
 // Screenshot Animation
 var screenshotPlaying = false;
 
-function StopMotionAnimation(container, path, type, count) {
+function ProgressBar(num_objects, on_increment, on_complete) {
+    this.num_objects = num_objects;
+    this.num_loaded_objects = 0;
+    this.progress = 0;
+    this.on_increment = on_increment;
+    this.on_complete = on_complete;
+    this.increment = function() {
+        this.num_loaded_objects++;
+        this.progress = this.num_loaded_objects / this.num_objects;
+        this.on_increment(this.progress);
+        if (this.progress === 1)
+            this.on_complete();
+    }
+}
+
+function Animation(container, path, type, count, onLoad) {
     this.container = container;
-    this.path = path;
-    this.type = count;
+    this.count = count;
+    this.index = 0;
+    this.previous_index = 0;
 
     var frame_index = 1;
+    var progress = 0;
     while (frame_index <= count) {
+        $(container).append('<img class="animation-frame">');
         var element = $(container + ' img:nth-child(' + frame_index + ')');
         var image_file = path + frame_index + type;
 
         if (frame_index > 1)
-            element.hide();
-        element.load().attr('src', image_file);
+            element.css('visibility', 'hidden');
+        element.load(onLoad).attr('src', image_file);
 
         frame_index++;
     }
-}
 
-function prepareAnimationFrames() {
-    var frame_index = 1;
-
-    new StopMotionAnimation('#animation-frames', 'images/animations/', '.png', 117);
-    // Prepare can animation frames
-    while (frame_index <= 117) {
-        var element = $('#animation-frames img:nth-child(' + frame_index + ')');
-        var image_file = 'images/animations/' + frame_index + '.png';
-
-        if (frame_index > 1)
-            element.hide();
-        element.load().attr('src', image_file);
-
-        frame_index++;
-    }
-    
-    // Prepare Market animation frames
-    frame_index = 1;
-    
-    while (frame_index <= 10) {
-        var element = $('#market-animation-frames img:nth-child(' + frame_index + ')');
-        var image_file = 'images/transitions/market/' + frame_index + '.png';
-
-        if (frame_index > 1)
-            element.hide();
-        element.load().attr('src', image_file);
-
-        frame_index++;
-    }
-}
-
-function gotoCanAnimationIndex(idx) {
-    previous_index = index;
-    index = idx + 1;
-    if (index != previous_index) {
-        $('#animation-frames img:nth-child(' + index + ')').show();
-        $('#animation-frames img:nth-child(' + previous_index + ')').hide();
+    this.gotoFrame = function(i) {
+        this.previous_index = this.index;
+        this.index = i + 1;
+        if (this.index != this.previous_index) {
+            $(container + ' img:nth-child(' + this.previous_index + ')').css('visibility', 'hidden');
+            $(container + ' img:nth-child(' + this.index + ')').css('visibility', 'visible');
+        }
     }
 }
 
@@ -87,7 +75,30 @@ function addStepsScene() {
 }
 
 $(document).ready(function() {
-    prepareAnimationFrames();
+    progress_bar = new ProgressBar(127,
+                                   function(progress) {
+                                       $('#progress p').html("" + (progress * 100) + "%");
+                                       TweenMax.to('#loading-can-switch', 5, {rotation: "" + (180 * progress), transformOrigin: "center 75%"});
+                                   },
+                                   function() {
+                                       $('#loading-screen').fadeOut(1000);
+                                   });
+
+    can_animation = new Animation('#animation-frames',
+                                  'images/animations/',
+                                  '.png',
+                                  117,
+                                  function() {
+                                      progress_bar.increment();
+                                  });
+
+    market_animation = new Animation('#market-animation-frames',
+                                     'images/transitions/market/',
+                                     '.png',
+                                     10,
+                                     function() {
+                                         progress_bar.increment();
+                                     });
 
     controller = new ScrollMagic({
         globalSceneOptions: {
@@ -124,7 +135,7 @@ $(document).ready(function() {
 
         /* reset can animation frame */
         if (pos === 0)
-            gotoCanAnimationIndex(0);
+            can_animation.gotoFrame(0);
     });
 
     /********
@@ -141,7 +152,7 @@ $(document).ready(function() {
     new ScrollScene({triggerElement: "#pin", duration: 620})
                     .addTo(controller)
                     .on("progress", function(e) {
-                        gotoCanAnimationIndex(Math.floor(e.progress * 15));
+                        can_animation.gotoFrame(Math.floor(e.progress * 15));
                     })
                     .on("enter", function(e) {
                         TweenMax.to('#home-indicator', 0.5, {opacity: 1});
@@ -248,7 +259,7 @@ $(document).ready(function() {
     new ScrollScene({triggerElement: "#pin", duration: 620, offset: 1600})
                     .addTo(controller)
                     .on("progress", function(e) {
-                        gotoCanAnimationIndex(15 + Math.floor(e.progress * 25));
+                        can_animation.gotoFrame(15 + Math.floor(e.progress * 25));
                     });
 
     /**********************
@@ -275,7 +286,7 @@ $(document).ready(function() {
     scene = new ScrollScene({triggerElement: "#pin", duration: 620, offset: 3600})
                     .addTo(controller)
                     .on("progress", function(e) {
-                        gotoCanAnimationIndex(40 + Math.floor(e.progress * 62));
+                        can_animation.gotoFrame(40 + Math.floor(e.progress * 62));
                     });
    
     scene = new ScrollScene({triggerElement: "#pin", duration: 1300, offset: 4050})
@@ -343,7 +354,7 @@ $(document).ready(function() {
     new ScrollScene({triggerElement: "#pin", duration: 620, offset: 5300, triggerHook: "onEnter"})
                     .addTo(controller)
                     .on("progress", function(e) {
-                        gotoCanAnimationIndex(103 + Math.floor(e.progress * 13));
+                        can_animation.gotoFrame(103 + Math.floor(e.progress * 13));
 
                         /* Handle Screenshots */
                         if (screenshotPlaying === false && e.progress === 1) {
