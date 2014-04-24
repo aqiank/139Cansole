@@ -462,6 +462,32 @@ h1, h2, h3, p, li {
     text-align: left;
 }
 
+.product-label {
+    position: absolute;
+    width: 960px;
+    height: 0px;
+    background-size: cover;
+}
+
+#teensy {
+    background: url('../images/3_product/teensy.png');
+}
+
+#bluetooth {
+    background: url('../images/3_product/bluetooth.png');
+}
+
+#lipo {
+    background: url('../images/3_product/lipo.png');
+}
+
+#charger {
+    background: url('../images/3_product/charger.png');
+}
+
+#sdcard {
+    background: url('../images/3_product/sdcard.png');
+}
 
 /************************
  * Transition: App *

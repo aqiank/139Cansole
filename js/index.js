@@ -188,21 +188,62 @@ function initializeScrollMagic() {
                     .add(TweenMax.to("#can_shadow_c", 1, {opacity: 0}));
     scene.setTween(tween);
     
-    scene = new ScrollScene({triggerElement: "#pin", duration: 1400, offset: 2150})
-                    .addTo(controller);
-    tween = new TimelineMax()
-                    .add(TweenMax.to("#teensy", 1, {opacity: 1}))
-                    .add(TweenMax.to("#bluetooth", 1, {opacity: 1}))
-                    .add(TweenMax.to("#sdcard", 1, {opacity: 1}))
-                    .add(TweenMax.to("#lipo", 1, {opacity: 1}))
-                    .add(TweenMax.to("#charger", 1, {opacity: 1}))
-                    .add(TweenMax.to("#charger", 8, {opacity: 1}))
-                    .add(TweenMax.to("#teensy", 1, {opacity: 0}))
-                    .add(TweenMax.to("#bluetooth", 1, {opacity: 0}))
-                    .add(TweenMax.to("#sdcard", 1, {opacity: 0}))
-                    .add(TweenMax.to("#lipo", 1, {opacity: 0}))
-                    .add(TweenMax.to("#charger", 1, {opacity: 0}));
-    scene.setTween(tween);
+    scene = new ScrollScene({triggerElement: "#pin", duration: 1000, offset: 2000})
+                    .addTo(controller)
+                    .on("enter", function(e) {
+                        TweenMax.to("#teensy", 1, {height: "505px"});
+                    })
+                    .on("leave", function(e) {
+                        TweenMax.to("#teensy", 1, {height: "0px"});
+                    });
+
+    scene = new ScrollScene({triggerElement: "#pin", duration: 900, offset: 2100})
+                    .addTo(controller)
+                    .on("enter", function(e) {
+                        TweenMax.to("#bluetooth", 1, {height: "505px"});
+                    })
+                    .on("leave", function(e) {
+                        TweenMax.to("#bluetooth", 1, {height: "0px"});
+                    });
+
+    scene = new ScrollScene({triggerElement: "#pin", duration: 800, offset: 2200})
+                    .addTo(controller)
+                    .on("enter", function(e) {
+                        TweenMax.fromTo("#sdcard", 1,
+                                        {height: "0px", y: "505", backgroundPosition: "0px -505px"},
+                                        {height: "505px", y: "0", backgroundPosition: "0px 0px"});
+                    })
+                    .on("leave", function(e) {
+                        TweenMax.fromTo("#sdcard", 1,
+                                        {height: "505px", y: "0", backgroundPosition: "0px 0px"},
+                                        {height: "0px", y: "505", backgroundPosition: "0px -505px"});
+                    });
+
+    scene = new ScrollScene({triggerElement: "#pin", duration: 700, offset: 2300})
+                    .addTo(controller)
+                    .on("enter", function(e) {
+                        TweenMax.fromTo("#lipo", 1,
+                                        {height: "0px", y: "505", backgroundPosition: "0px -505px"},
+                                        {height: "505px", y: "0", backgroundPosition: "0px 0px"});
+                    })
+                    .on("leave", function(e) {
+                        TweenMax.fromTo("#lipo", 1,
+                                        {height: "505px", y: "0", backgroundPosition: "0px 0px"},
+                                        {height: "0px", y: "505", backgroundPosition: "0px -505px"});
+                    });
+
+    scene = new ScrollScene({triggerElement: "#pin", duration: 600, offset: 2400})
+                    .addTo(controller)
+                    .on("enter", function(e) {
+                        TweenMax.fromTo("#charger", 1,
+                                        {height: "0px", y: "505", backgroundPosition: "0px -505px"},
+                                        {height: "505px", y: "0", backgroundPosition: "0px 0px"});
+                    })
+                    .on("leave", function(e) {
+                        TweenMax.fromTo("#charger", 1,
+                                        {height: "505px", y: "0", backgroundPosition: "0px 0px"},
+                                        {height: "0px", y: "505", backgroundPosition: "0px -505px"});
+                    });
 
     new ScrollScene({triggerElement: "#pin", duration: 620, offset: 2200})
                     .setPin("#all")
