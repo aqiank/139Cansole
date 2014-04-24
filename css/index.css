@@ -16,6 +16,10 @@ h1, h2, h3, p, li {
 	font-family: "Cabin";
 }
 
+a {
+    text-decoration: none;
+}
+
 #all {
     width: 100%;
 }
@@ -443,16 +447,17 @@ h1, h2, h3, p, li {
     left: 20px;
 }
 
-#product_content img{
+#product_content img {
     padding-top: 7px;
 }
 
-#product_headline {
+#product_text p {
     line-height: 1.5em;
     font-size: 1.05em;
     text-align: left;
     margin-left: 35px;
     margin-top: 3px;
+    color: #222;
 }
 
 #product_description {
