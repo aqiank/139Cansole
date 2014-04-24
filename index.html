@@ -16,133 +16,32 @@
     <![endif]-->
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="layer4">
+        <div class="table">
+            <div class="vcenter">
+                <div id="loading-can" class="table">
+                    <div class="vcenter">
+                        <img id="loading-can-switch" src="images/0_loading/can_switch.png">
+                    </div>
+                </div>
+                <div id="progress" class="inline-center">
+                    <p>0%</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Animation -->
     <div id="animation-container" class="container layer1">
         <div id="animation" class="content">
-            <img id="can_shadow_a" src="images/1_home/shadow.png" style="opacity: 0">
+            <img id="can_shadow_a" src="images/1_home/shadow.png">
             <img id="can_shadow_b" src="images/2_about/shadow.png" style="opacity: 0">
             <img id="can_shadow_c" src="images/3_product/shadow.png" style="opacity: 0">
             <img id="can_shadow_d" src="images/4_app/shadow.png" style="opacity: 0">
             <img id="can_shadow_e" src="images/5_market/shadow.png" style="opacity: 0">
             <div id="animation-frames">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
-                <img class="animation-frame">
+                <!-- Can animation frames will be added here via Javascript -->
             </div>
             <img id="teensy" src="images/3_product/teensy.png" style="opacity: 0">
             <img id="bluetooth" src="images/3_product/bluetooth.png" style="opacity: 0">
@@ -163,7 +62,10 @@
                 </div>
             </div>
             
-            <!-- Screenshots --> <div id="screenshots" class="content"> <div id="screen1"></div> <div id="screen2"></div>
+            <!-- Screenshots -->
+            <div id="screenshots" class="content">
+                <div id="screen1"></div>
+                <div id="screen2"></div>
                 <div id="screen3"></div>
             </div>
             
@@ -193,21 +95,13 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Market content -->
-            <!-- <div id="market_content">
-                <p id="text1">SEARCH GAMES ON 139 GAMES MARKET</p>
-                <p id="text2">CHOOSE YOUR FAVORITE GAME</p>
-                <p id="text3">GAME PLAY</p>
-            </div>
-            -->
         </div>
     </div>
     
     <!-- Navbar -->
     <div id="navbar_bg"></div>
     <div id="navbar">
-        <div class="content">
+        <div class="content layer3">
             <a href="index.html"><img id="logo" src="images/navbar/logo.png"></a>
             <ul>
                 <li><a href="#home_trigger">HOME</a></li>
@@ -285,14 +179,6 @@
                             <p id="home_description">SIGN UP</p>
                         </span>
                     </div>
-                    <!--
-                    <div id="supporters">
-                        <p>PRESENTED BY</p>
-                        <img src="images/1_home/coke.png">
-                        <img src="images/1_home/bbh.png">
-                        <img src="images/1_home/gingee.png">
-                    </div>
-                    -->
                     <div class="inline-center">
                         <span id="steps" class="hcenter">
                             <div class="step" id="step1">
