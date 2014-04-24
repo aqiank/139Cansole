@@ -53,10 +53,10 @@ function Animation(container, path, type, count, onLoad) {
 
     this.gotoFrame = function(i) {
         this.previous_index = this.index;
-        this.index = i + 1;
+        this.index = i;
         if (this.index != this.previous_index) {
-            $(container + ' img:nth-child(' + this.previous_index + ')').css('visibility', 'hidden');
-            $(container + ' img:nth-child(' + this.index + ')').css('visibility', 'visible');
+            $(container + ' img:nth-child(' + (this.previous_index + 1) + ')').css('visibility', 'hidden');
+            $(container + ' img:nth-child(' + (this.index + 1) + ')').css('visibility', 'visible');
         }
     }
 }
