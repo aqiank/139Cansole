@@ -127,10 +127,6 @@ h1, h2, h3, p, li {
     position: fixed;
 }
 
-.animation-frame {
-    position: fixed;
-}
-
 #screenshots {
     position: relative;
     width: 296px;
@@ -568,15 +564,14 @@ h1, h2, h3, p, li {
     background-position: center;
 }
 
-#market_animation_frames {
+#market-animation-frames {
     position: absolute;
 }
 
-.market_animation_frame {
+#market-animation-frames img {
     position: absolute;
-    bottom: 0%;
     right: 0%;
-    margin: 0px 16px;
+    bottom: 0%;
 }
 
 #market {

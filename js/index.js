@@ -40,7 +40,7 @@ function Animation(container, path, type, count, onLoad) {
     var frame_index = 1;
     var progress = 0;
     while (frame_index <= count) {
-        $(container).append('<img class="animation-frame">');
+        $(container).append('<img>');
         var element = $(container + ' img:nth-child(' + frame_index + ')');
         var image_file = path + frame_index + type;
 
@@ -321,12 +321,7 @@ $(document).ready(function() {
     scene = new ScrollScene({triggerElement: "#pin", duration: 250, offset: 4900, triggerHook: "onEnter"})
                     .addTo(controller)
                     .on("progress", function(e) {
-                        market_previous_frame_index = market_frame_index;
-                        market_frame_index = Math.floor(e.progress * 9);
-                        if (market_frame_index != market_previous_frame_index) {
-                            $('#market-animation-frames img:nth-child(' +  + market_frame_index).css('visibility', 'visible');
-                            $('#market-animation-frame-' + market_previous_frame_index).css('visibility', 'hidden');
-                        }
+                        market_animation.gotoFrame(Math.floor(e.progress * 9));
                     });
      
     /**********
