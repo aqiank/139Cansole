@@ -360,25 +360,20 @@ h1, h2, h3, p, li {
     padding-left: 10px;
 }
 
-.step {
-    float: left;
-    margin: 0 16px;
-    
-}
-
-.step p {
-    width: 160px;
-    color: #fefefe;
-    line-height: 1.35em;
-    font-size: 0.7em;
-}
-
 #steps {
     margin: 270px 0 0 0;
 }
 
-#steps p {
+.step {
+    float: left;
+    margin: 0 16px;
+}
+
+.step p {
+    width: 160px;
     color: #222;
+    line-height: 1.35em;
+    font-size: 0.7em;
 }
 
 /*********

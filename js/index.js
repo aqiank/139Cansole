@@ -61,45 +61,7 @@ function Animation(container, path, type, count, onLoad) {
     }
 }
 
-function addStepsScene() {
-    var scene = new ScrollScene({triggerElement: "#pin", duration: 300})
-                    .addTo(controller);
-    var tween = new TimelineMax()
-                    .add([TweenMax.fromTo("#can_shadow_a", 0.5, {alpha: 1}, {alpha: 0}),
-                          new TimelineMax()
-                            .add(TweenMax.fromTo('#step4', 1, {y: "0", opacity: 1}, {y: "100", opacity: 0}))
-                            .add(TweenMax.fromTo('#step3', 1, {y: "0", opacity: 1}, {y: "100", opacity: 0}))
-                            .add(TweenMax.fromTo('#step2', 1, {y: "0", opacity: 1}, {y: "100", opacity: 0}))
-                            .add(TweenMax.fromTo('#step1', 1, {y: "0", opacity: 1}, {y: "100", opacity: 0}))]);
-    scene.setTween(tween);
-}
-
-$(document).ready(function() {
-    progress_bar = new ProgressBar(127,
-                                   function(progress) {
-                                       $('#progress p').html("" + Math.round(progress * 100) + "%");
-                                       TweenMax.to('#loading-can-switch', 5, {rotation: "" + (180 * progress), transformOrigin: "center 75%"});
-                                   },
-                                   function() {
-                                       $('#loading-screen').fadeOut(1000);
-                                   });
-
-    can_animation = new Animation('#animation-frames',
-                                  'images/animations/',
-                                  '.png',
-                                  117,
-                                  function() {
-                                      progress_bar.increment();
-                                  });
-
-    market_animation = new Animation('#market-animation-frames',
-                                     'images/transitions/market/',
-                                     '.png',
-                                     10,
-                                     function() {
-                                         progress_bar.increment();
-                                     });
-
+function initializeScrollMagic() {
     controller = new ScrollMagic({
         globalSceneOptions: {
             triggerHook: "onLeave"
@@ -132,23 +94,28 @@ $(document).ready(function() {
             TweenMax.to('#navbar_bg', 0.5, {y: 100});
         else
             TweenMax.to('#navbar_bg', 0.5, {y: 0});
-
-        /* reset can animation frame */
-        if (pos === 0)
-            can_animation.gotoFrame(0);
     });
 
     /********
      * Home *
      ********/
     new TimelineMax()
-        .add([TweenMax.fromTo("#home_content", 1, {alpha: 0}, {alpha: 1}),
-              new TimelineMax()
-                  .add(TweenMax.from('#step1', 0.5, {y: "100", opacity: 0}))
-                  .add(TweenMax.from('#step2', 0.5, {y: "100", opacity: 0}))
-                  .add(TweenMax.from('#step3', 0.5, {y: "100", opacity: 0}))
-                  .add(TweenMax.from('#step4', 0.5, {y: "100", opacity: 0, onComplete: addStepsScene}))]);
-
+          .add(TweenMax.fromTo('#step1', 0.5, {y: "100", opacity: 0}, {y: "0", opacity: 1}))
+          .add(TweenMax.fromTo('#step2', 0.5, {y: "100", opacity: 0}, {y: "0", opacity: 1}))
+          .add(TweenMax.fromTo('#step3', 0.5, {y: "100", opacity: 0}, {y: "0", opacity: 1}))
+          .add(TweenMax.fromTo('#step4', 0.5, {y: "100", opacity: 0}, {y: "0", opacity: 1, onComplete: function() {
+                  var scene = new ScrollScene({triggerElement: "#pin", duration: 300})
+                  .addTo(controller);
+                  var tween = new TimelineMax()
+                  .add([TweenMax.fromTo("#can_shadow_a", 0.5, {alpha: 1}, {alpha: 0}),
+                      new TimelineMax()
+                          .add(TweenMax.fromTo('#step4', 1, {y: "0", opacity: 1}, {y: "100", opacity: 0}))
+                          .add(TweenMax.fromTo('#step3', 1, {y: "0", opacity: 1}, {y: "100", opacity: 0}))
+                          .add(TweenMax.fromTo('#step2', 1, {y: "0", opacity: 1}, {y: "100", opacity: 0}))
+                          .add(TweenMax.fromTo('#step1', 1, {y: "0", opacity: 1}, {y: "100", opacity: 0}))]);
+                  scene.setTween(tween);
+          }}));
+    
     new ScrollScene({triggerElement: "#pin", duration: 620})
                     .addTo(controller)
                     .on("progress", function(e) {
@@ -416,4 +383,32 @@ $(document).ready(function() {
                     }
                 }
             });
+}
+
+$(document).ready(function() {
+    progress_bar = new ProgressBar(127,
+                                   function(progress) {
+                                       $('#progress p').html("" + Math.round(progress * 100) + "%");
+                                       TweenMax.to('#loading-can-switch', 5, {rotation: "" + (180 * progress), transformOrigin: "center 75%"});
+                                   },
+                                   function() {
+                                       $('#loading-screen').fadeOut(1000);
+                                       initializeScrollMagic();
+                                   });
+
+    can_animation = new Animation('#animation-frames',
+                                  'images/animations/',
+                                  '.png',
+                                  117,
+                                  function() {
+                                      progress_bar.increment();
+                                  });
+
+    market_animation = new Animation('#market-animation-frames',
+                                     'images/transitions/market/',
+                                     '.png',
+                                     10,
+                                     function() {
+                                         progress_bar.increment();
+                                     });
 });
