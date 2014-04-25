@@ -445,7 +445,7 @@ $(document).ready(function() {
                 TweenMax.to('#loading-screen', 1, {width: "" + (100 * progress) + "%"});
             },
             function() {
-                //$('#loading-screen-container').fadeOut(1000);
+                $('#loading-screen-container').fadeOut(1000);
                 initializeScrollMagic();
             }
     );
