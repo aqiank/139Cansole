@@ -425,29 +425,35 @@ function initializeScrollMagic() {
 }
 
 $(document).ready(function() {
-    progress_bar = new ProgressBar(127,
-                                   function(progress) {
-                                       $('#progress p').html("" + Math.round(progress * 100) + "%");
-                                       TweenMax.to('#loading-can-switch', 1, {rotation: "" + (180 * progress), transformOrigin: "center 75%"});
-                                   },
-                                   function() {
-                                       $('#loading-screen').fadeOut(1000);
-                                       initializeScrollMagic();
-                                   });
+    progress_bar = new ProgressBar(
+            127,
+            function(progress) {
+                $('#progress p').html("" + Math.round(progress * 100) + "%");
+                TweenMax.to('#loading-can-switch', 1, {rotation: "" + (180 * progress), transformOrigin: "center 75%"});
+            },
+            function() {
+                $('#loading-screen').fadeOut(1000);
+                initializeScrollMagic();
+            }
+    );
 
-    can_animation = new Animation('#animation-frames',
-                                  'images/animations/',
-                                  '.png',
-                                  117,
-                                  function() {
-                                      progress_bar.increment();
-                                  });
+    can_animation = new Animation(
+            '#animation-frames',
+            'images/animations/',
+            '.png',
+            117,
+            function() {
+                progress_bar.increment();
+            }
+    );
 
-    market_animation = new Animation('#market-animation-frames',
-                                     'images/transitions/market/',
-                                     '.png',
-                                     10,
-                                     function() {
-                                         progress_bar.increment();
-                                     });
+    market_animation = new Animation(
+            '#market-animation-frames',
+            'images/transitions/market/',
+            '.png',
+            10,
+            function() {
+                progress_bar.increment();
+            }
+    );
 });
