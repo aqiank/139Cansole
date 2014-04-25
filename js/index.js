@@ -255,7 +255,7 @@ function initializeScrollMagic() {
                         TweenMax.to('#product-indicator', 0.5, {opacity: 0.2});
                     });
 
-    scene = new ScrollScene({triggerElement: "#pin", duration: 1600, offset: 1900})
+    scene = new ScrollScene({triggerElement: "#pin", duration: 2000, offset: 2000})
                     .addTo(controller);
     tween = new TimelineMax()
                     .add(TweenMax.fromTo('#product-content', 0.25, {x: -100, opacity: 0}, {x: 0, opacity: 1}))
@@ -272,7 +272,7 @@ function initializeScrollMagic() {
     /**********************
      * Transition: App    *
      **********************/
-    scene = new ScrollScene({triggerElement: "#pin", duration: 1500, offset: 2820, triggerHook: "onEnter"})
+    scene = new ScrollScene({triggerElement: "#pin", duration: 1500, offset: 3250, triggerHook: "onEnter"})
                     .addTo(controller);
     tween = TweenMax.to("#transition-app", 1, {backgroundPosition: "-2800px 0px"});
     scene.setTween(tween);
@@ -304,7 +304,7 @@ function initializeScrollMagic() {
                     .add(TweenMax.to("#app-content", 1, {alpha: 0}));
     scene.setTween(tween);
 
-    scene = new ScrollScene({triggerElement: "#pin", duration: 1000, offset: 4200, triggerHook: "onEnter"})
+    scene = new ScrollScene({triggerElement: "#pin", duration: 1000, offset: 4400, triggerHook: "onEnter"})
                     .addTo(controller);
     tween = new TimelineMax()
                     .add(TweenMax.to("#can-shadow-d", 1, {opacity: 1}))
