@@ -6,6 +6,11 @@
 	src: url("../fonts/Cabin-Regular.otf");
 }
 
+@font-face {
+	font-family: "pixelmix";
+	src: url("../fonts/pixelmix.ttf");
+}
+
 html, body {
     width: 100%;
     height: 100%;
@@ -93,22 +98,27 @@ a {
 }
 
 #loading-can {
-    width: 185px;
-    height: 191px;
+    width: 286px;
+    height: 285px;
     background: url('../images/0_loading/can.png');
     background-repeat: no-repeat;
-    margin: 0 auto;
+    float: left;
 }
 
 #loading-can-switch {
-    display: block;
     margin: 0 auto;
 }
 
+#loading-cansole {
+    margin: 0 0 0 16px;
+}
+
 #progress {
-    width: 100%;
+    display: inline-block;
     margin: 0 auto;
     color: #f3f3f3;
+    font-family: "pixelmix";
+    font-size: 2.5em;
 }
 
 /*************

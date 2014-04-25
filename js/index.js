@@ -440,7 +440,7 @@ $(document).ready(function() {
     progress_bar = new ProgressBar(
             127,
             function(progress) {
-                $('#progress p').html("" + Math.round(progress * 100) + "%");
+                $('#progress').html("" + Math.round(progress * 139));
                 TweenMax.to('#loading-can-switch', 1, {rotation: "" + (180 * progress), transformOrigin: "center 75%"});
             },
             function() {
