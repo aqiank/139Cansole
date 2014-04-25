@@ -322,7 +322,10 @@ function initializeScrollMagic() {
      * Transition: Market *
      **********************/
     scene = new ScrollScene({triggerElement: "#pin", duration: 500, offset: 4000, triggerHook: "onEnter"})
-                    .addTo(controller);
+                    .addTo(controller)
+                    .on('enter', function(e) {
+                        $('html, body').css('background', '#222');
+                    });
     tween = TweenMax.fromTo("#transition-market-a", 1, {opacity: 0}, {opacity: 1});
     scene.setTween(tween);
     
@@ -346,6 +349,8 @@ function initializeScrollMagic() {
                     .on("enter", function(e) {
                         TweenMax.to('#market-indicator', 0.5, {opacity: 1});
                         activeIndicatorId = '#market-indicator';
+
+                        $('html, body').css('background', '#222');
                     })
                     .on("leave", function(e) {
                         TweenMax.to('#market-indicator', 0.5, {opacity: 0.2});
