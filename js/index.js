@@ -442,9 +442,10 @@ $(document).ready(function() {
             function(progress) {
                 $('#progress').html("" + Math.round(progress * 139));
                 TweenMax.to('#loading-can-switch', 1, {rotation: "" + (180 * progress), transformOrigin: "center 75%"});
+                TweenMax.to('#loading-screen', 1, {width: "" + (100 * progress) + "%"});
             },
             function() {
-                $('#loading-screen').fadeOut(1000);
+                $('#loading-screen-container').fadeOut(1000);
                 initializeScrollMagic();
             }
     );
