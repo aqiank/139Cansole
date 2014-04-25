@@ -103,17 +103,23 @@ function initializeScrollMagic() {
           .add(TweenMax.fromTo('#step2', 0.5, {y: "100", opacity: 0}, {y: "0", opacity: 1}))
           .add(TweenMax.fromTo('#step3', 0.5, {y: "100", opacity: 0}, {y: "0", opacity: 1}))
           .add(TweenMax.fromTo('#step4', 0.5, {y: "100", opacity: 0}, {y: "0", opacity: 1, onComplete: function() {
-                  var scene = new ScrollScene({triggerElement: "#pin", duration: 300})
-                  .addTo(controller);
+                  var scene = new ScrollScene({triggerElement: "#pin", duration: 200, offset: 270})
+                                  .addTo(controller);
                   var tween = new TimelineMax()
-                  .add([TweenMax.fromTo("#can-shadow-a", 0.5, {alpha: 1}, {alpha: 0}),
-                      new TimelineMax()
-                          .add(TweenMax.fromTo('#step4', 1, {y: "0", opacity: 1}, {y: "100", opacity: 0}))
-                          .add(TweenMax.fromTo('#step3', 1, {y: "0", opacity: 1}, {y: "100", opacity: 0}))
-                          .add(TweenMax.fromTo('#step2', 1, {y: "0", opacity: 1}, {y: "100", opacity: 0}))
-                          .add(TweenMax.fromTo('#step1', 1, {y: "0", opacity: 1}, {y: "100", opacity: 0}))]);
+                                  .add(TweenMax.fromTo('#step4', 1, {y: "0", opacity: 1}, {y: "100", opacity: 0}))
+                                  .add(TweenMax.fromTo('#step3', 1, {y: "0", opacity: 1}, {y: "100", opacity: 0}))
+                                  .add(TweenMax.fromTo('#step2', 1, {y: "0", opacity: 1}, {y: "100", opacity: 0}))
+                                  .add(TweenMax.fromTo('#step1', 1, {y: "0", opacity: 1}, {y: "100", opacity: 0}));
                   scene.setTween(tween);
           }}));
+  
+    scene = new ScrollScene({triggerElement: "#pin", duration: 600})
+                  .addTo(controller);
+    tween = new TimelineMax()
+                  .add([TweenMax.to("#animation-frames", 1, {y: -200}),
+                        TweenMax.to("#can-shadow-a", 0.5, {alpha: 0})])
+                  .add(TweenMax.to("#animation-frames", 1, {y: 0}));
+    scene.setTween(tween);
     
     new ScrollScene({triggerElement: "#pin", duration: 620})
                     .addTo(controller)

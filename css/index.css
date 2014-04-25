@@ -126,6 +126,10 @@ a {
     padding-top: 50px;
 }
 
+#animation-frames {
+    position: absolute;
+}
+
 #screenshots {
     position: relative;
     width: 296px;
