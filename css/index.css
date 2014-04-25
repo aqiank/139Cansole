@@ -24,11 +24,6 @@ a {
     width: 100%;
 }
 
-.main-container {
-    width: 100%;
-    height: 100%;
-}
-
 .last-container {
     width: 100%;
     height: 800px;
@@ -240,7 +235,7 @@ a {
     font-weight: bold;
 }
 
-#navbar_bg {
+#navbar-bg {
     position: fixed;
     width: 100%;
     height: 64px;
@@ -279,34 +274,30 @@ a {
     color: #f00;
 }
 
-#home_button_image {
-    background: url('../images/navbar/icon_home_grey.png') no-repeat center 8px;
-}
-
 /***********
  * Anchors *
  ***********/
-#home_trigger {
+#home-trigger {
     position: relative;
     top: 0px;
 }
  
-#about_trigger {
+#about-trigger {
     position: relative;
     top: 800px;
 }
  
-#product_trigger {
+#product-trigger {
     position: relative;
     top: 3000px;
 }
  
-#app_trigger {
+#app-trigger {
     position: relative;
     top: 4400px;
 }
  
-#market_trigger {
+#market-trigger {
     position: relative;
     top: 6400px;
 }
@@ -320,20 +311,20 @@ a {
     background-position: center;
 }
 
-#home_content {
+#home-content {
     color: #fefefe;
     padding-top: 144px;
     margin: 0 16px;
 }
 
-#home_headline {
+#home-headline {
     font-size: 2.75em;
     margin: 8px;
     font-weight: bold;
     letter-spacing: 1px;
 }
 
-#home_description {
+#home-description {
     font-size: 1.3em;
     margin: 8px;
     padding: 8px;
@@ -341,7 +332,7 @@ a {
     letter-spacing: 1px;
 }
 
-#home_text {
+#home-text {
     position: relative;
     width: 600px;
     top: 64px;
@@ -387,21 +378,21 @@ a {
     background: #f3f3f3;
 }
 
-#about_content {
+#about-content {
     color: #222222;
     width: 360px;
     padding-top: 223px;
     margin: 16px;
 }
 
-#about_headline {
+#about-headline {
     font-size: 2em;
     line-height: 1.4em;
     font-weight: bold;
     text-align: left;
 }
 
-#about_description {
+#about-description {
     line-height: 1.75em;
     font-size: 0.8em;
     text-align: left;
@@ -410,17 +401,17 @@ a {
 /************************
  * Transition: Product *
  ************************/
-#transition_product {
+#transition-product {
     background: #f3f3f3;
 }
-#transition_product_a {
+#transition-product-a {
     position: relative;
     background: url('../images/transitions/t2_bg.jpg');
     background-size: cover;
     background-position: center;
 }
 
-#transition_product_b {
+#transition-product-b {
     position: relative;
     background: url('../images/transitions/t1_bg.jpg');
     background-size: cover;
@@ -439,7 +430,7 @@ a {
     background: #f3f3f3;
 }
 
-#product_content {
+#product-content {
     position: relative;
     color: #222222;
     width: 500px;
@@ -447,11 +438,11 @@ a {
     left: 20px;
 }
 
-#product_content img {
+#product-content img {
     padding-top: 7px;
 }
 
-#product_text p {
+#product-text p {
     line-height: 1.5em;
     font-size: 1.05em;
     text-align: left;
@@ -460,7 +451,7 @@ a {
     color: #222;
 }
 
-#product_description {
+#product-description {
     font-size: 2em;
     line-height: 1.5em;
     font-weight: bold;
@@ -497,13 +488,9 @@ a {
 /************************
  * Transition: App *
  ************************/
-#transition_app {
+#transition-app {
     background: url('../images/transitions/app/longbg.jpg');
     overflow: hidden;
-}
-
-#transition_app_images img {
-    margin: 0px;
 }
 
 /*******
@@ -515,14 +502,14 @@ a {
     background-position: center bottom;
 }
 
-#app_content {
+#app-content {
     position: relative;
     top: -620px;
     width: 460px;
     padding-top: 160px;
 }
 
-#app_headline {
+#app-headline {
     color: #222222;
     font-size: 2.1em;
     line-height: 1.25em;
@@ -530,7 +517,7 @@ a {
     text-align: left;
 }
 
-#app_description {
+#app-description {
     color: #222222;
     line-height: 1.75em;
     font-size: 0.98em;
@@ -540,13 +527,13 @@ a {
 /**********************
  * Transition: Market *
  **********************/
-#transition_market_content_a, #transition_market_content_b {
+#transition-market-content-a, #transition-market-content-b {
     position: absolute;
     width: 480px;
     top: 160px;
 }
 
-#transition_market_headline_a {
+#transition-market-headline-a {
     color: #f3f3f3;
     line-height: 1.75em;
     font-size: 1.2em;
@@ -554,14 +541,14 @@ a {
     font-weight: bold;
 }
 
-#transition_market_description_a {
+#transition-market-description-a {
     color: #f3f3f3;
     font-size: 2.5em;
     line-height: 1.5em;
     font-weight: bold;
 }
 
-#transition_market_headline_b {
+#transition-market-headline-b {
     color: #222222;
     line-height: 1.75em;
     font-size: 1.2em;
@@ -569,21 +556,21 @@ a {
     font-weight: bold;
 }
 
-#transition_market_description_b {
+#transition-market-description-b {
     color: #222222;
     font-size: 2.5em;
     line-height: 1.5em;
     font-weight: bold;
 }
 
-#transition_market_a {
+#transition-market-a {
     position: absolute;
     background: url('../images/transitions/market/bg2.jpg');
     background-size: cover;
     background-position: center;
 }
 
-#transition_market_b {
+#transition-market-b {
     position: absolute;
     background: url('../images/transitions/market/bg1.jpg');
     background-size: cover;
@@ -607,13 +594,13 @@ a {
     background-repeat: no-repeat;
 }
 
-#market_content {
+#market-content {
     position: relative;
     top: -830px;
     left: -800px;
 }
 
-#market_content p {
+#market-content p {
     line-height: 1.5em;
     color: #222;
     opacity: 0;
