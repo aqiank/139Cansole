@@ -96,6 +96,7 @@ a {
     width: 185px;
     height: 191px;
     background: url('../images/0_loading/can.png');
+    background-repeat: no-repeat;
     margin: 0 auto;
 }
 
