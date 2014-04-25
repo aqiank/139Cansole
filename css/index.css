@@ -127,7 +127,7 @@ a {
 }
 
 #screenshots {
-    position: relative;
+    position: absolute;
     width: 296px;
     height: 170px;
     top: -348px;
@@ -379,6 +379,7 @@ a {
 }
 
 #about-content {
+    position: absolute;
     color: #222222;
     width: 360px;
     padding-top: 223px;
@@ -431,11 +432,10 @@ a {
 }
 
 #product-content {
-    position: relative;
+    position: absolute;
     color: #222222;
     width: 500px;
-    top: -510px;
-    left: 20px;
+    margin-top: 48px;
 }
 
 #product-content img {
@@ -503,10 +503,9 @@ a {
 }
 
 #app-content {
-    position: relative;
-    top: -620px;
+    position: absolute;
     width: 460px;
-    padding-top: 160px;
+    margin-top: 240px;
 }
 
 #app-headline {
