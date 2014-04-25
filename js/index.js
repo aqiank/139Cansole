@@ -444,10 +444,11 @@ $(document).ready(function() {
                 TweenMax.to('#loading-can-switch', 1, {rotation: "" + (180 * progress), transformOrigin: "center 75%"});
             },
             function() {
-                $('#loading-screen').fadeOut(1000);
+                //$('#loading-screen-container').fadeOut(1000);
                 initializeScrollMagic();
             }
     );
+                TweenMax.to('#loading-screen', 10, {width: "100%"});
 
     can_animation = new Animation(
             '#animation-frames',
