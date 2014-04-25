@@ -281,8 +281,8 @@ function initializeScrollMagic() {
     /*******
      * App *
      *******/
-    new ScrollScene({triggerElement: "#pin", duration: 620, offset: 4400})
-                    .setPin("#all")
+    new ScrollScene({triggerElement: "#app", duration: 620})
+                    .setPin("#app", {pushFollowers: false})
                     .addTo(controller)
                     .on("enter", function(e) {
                         TweenMax.to('#app-indicator', 0.5, {opacity: 1});
@@ -291,7 +291,7 @@ function initializeScrollMagic() {
                     .on("leave", function(e) {
                         TweenMax.to('#app-indicator', 0.5, {opacity: 0.2});
                     });
-    scene = new ScrollScene({triggerElement: "#pin", duration: 620, offset: 3600})
+    scene = new ScrollScene({triggerElement: "#pin", duration: 620, offset: 3700})
                     .addTo(controller)
                     .on("progress", function(e) {
                         can_animation.gotoFrame(40 + Math.floor(e.progress * 62));
@@ -316,17 +316,17 @@ function initializeScrollMagic() {
     /**********************
      * Transition: Market *
      **********************/
-    scene = new ScrollScene({triggerElement: "#pin", duration: 500, offset: 4100, triggerHook: "onEnter"})
+    scene = new ScrollScene({triggerElement: "#pin", duration: 500, offset: 4000, triggerHook: "onEnter"})
                     .addTo(controller);
     tween = TweenMax.fromTo("#transition_market_a", 1, {opacity: 0}, {opacity: 1});
     scene.setTween(tween);
     
-    scene = new ScrollScene({triggerElement: "#pin", duration: 250, offset: 5300, triggerHook: "onEnter"})
+    scene = new ScrollScene({triggerElement: "#pin", duration: 250, offset: 4800, triggerHook: "onEnter"})
                     .addTo(controller);
     tween = TweenMax.to("#transition_market_b", 1, {opacity: 0});
     scene.setTween(tween);
 
-    scene = new ScrollScene({triggerElement: "#pin", duration: 250, offset: 5300, triggerHook: "onEnter"})
+    scene = new ScrollScene({triggerElement: "#pin", duration: 250, offset: 4800, triggerHook: "onEnter"})
                     .addTo(controller)
                     .on("progress", function(e) {
                         market_animation.gotoFrame(Math.floor(e.progress * 9));
@@ -335,8 +335,8 @@ function initializeScrollMagic() {
     /**********
      * Market *
      **********/
-    new ScrollScene({triggerElement: "#pin", duration: 2480, offset: 6400})
-                    .setPin("#all")
+    new ScrollScene({triggerElement: "#market", duration: 2480})
+                    .setPin("#market")
                     .addTo(controller)
                     .on("enter", function(e) {
                         TweenMax.to('#market-indicator', 0.5, {opacity: 1});
@@ -352,7 +352,6 @@ function initializeScrollMagic() {
                     .add(TweenMax.fromTo("#can_shadow_e", 1, {opacity: 0}, {opacity: 1}))
                     .add(TweenMax.to("#can_shadow_e", 2, {opacity: 1}))
     scene.setTween(tween);
-    
 
     new ScrollScene({triggerElement: "#pin", duration: 620, offset: 5300, triggerHook: "onEnter"})
                     .addTo(controller)
