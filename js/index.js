@@ -370,44 +370,45 @@ function initializeScrollMagic() {
     scene = new ScrollScene({triggerElement: "#pin", duration: 1500, offset: 6500, triggerHook: "onEnter"})
                     .addTo(controller)
                     .on('enter', function(e) {
-                        TweenMax.to('#screen1', 0.5, {x: -296});
-                        TweenMax.to('#text1', 0.5, {x: 100, opacity: 1});
+                        TweenMax.to('#screen2', 0.5, {marginLeft: 0});
+                        TweenMax.to('#market-label-1', 0.5, {x: 100, opacity: 1});
+
                     })
                     .on('leave', function(e) {
                         if ($(window).scrollTop() > 6910)
                             return;
-                        TweenMax.to('#screen1', 0.5, {x: 0});
-                        TweenMax.to('#text1', 0.5, {x: 0, opacity: 0});
+                        TweenMax.to('#screen2', 0.5, {marginLeft: 296});
+                        TweenMax.to('#market-label-1', 0.5, {x: 0, opacity: 0});
                     });
     scene = new ScrollScene({triggerElement: "#pin", duration: 500, offset: 7000, triggerHook: "onEnter"})
                     .addTo(controller)
                     .on('enter', function(e) {
-                        TweenMax.to('#screen1', 0.5, {x: -296});
-                        TweenMax.to('#text1', 0.5, {x: 100, opacity: 1});
-                        TweenMax.to('#screen2', 0.5, {x: -296});
-                        TweenMax.to('#text2', 0.5, {x: 100, opacity: 1});
+                        TweenMax.to('#screen2', 0.5, {marginLeft: 0});
+                        TweenMax.to('#market-label-1', 0.5, {x: 100, opacity: 1});
+                        TweenMax.to('#screen3', 0.5, {marginLeft: 0});
+                        TweenMax.to('#market-label-2', 0.5, {x: 100, opacity: 1});
                     })
                     .on('leave', function(e) {
                         if ($(window).scrollTop() > 7260)
                             return;
-                        TweenMax.to('#screen2', 0.5, {x: 0});
-                        TweenMax.to('#text2', 0.5, {x: 0, opacity: 0});
+                        TweenMax.to('#screen3', 0.5, {marginLeft: 296});
+                        TweenMax.to('#market-label-2', 0.5, {x: 0, opacity: 0});
                     });
     scene = new ScrollScene({triggerElement: "#pin", duration: 500, offset: 7500, triggerHook: "onEnter"})
                     .addTo(controller)
                     .on('enter', function(e) {
-                        TweenMax.to('#screen1', 0.5, {x: -296});
-                        TweenMax.to('#text1', 0.5, {x: 100, opacity: 1});
-                        TweenMax.to('#screen2', 0.5, {x: -296});
-                        TweenMax.to('#text2', 0.5, {x: 100, opacity: 1});
-                        TweenMax.to('#screen3', 0.5, {x: -296});
-                        TweenMax.to('#text3', 0.5, {x: 100, opacity: 1});
+                        TweenMax.to('#screen2', 0.5, {marginLeft: 0});
+                        TweenMax.to('#market-label-1', 0.5, {x: 100, opacity: 1});
+                        TweenMax.to('#screen3', 0.5, {marginLeft: 0});
+                        TweenMax.to('#market-label-2', 0.5, {x: 100, opacity: 1});
+                        TweenMax.to('#screen4', 0.5, {marginLeft: 0});
+                        TweenMax.to('#market-label-3', 0.5, {x: 100, opacity: 1});
                     })
                     .on('leave', function(e) {
                         if ($(window).scrollTop() > 7610)
                             return;
-                        TweenMax.to('#screen3', 0.5, {x: 0});
-                        TweenMax.to('#text3', 0.5, {x: 0, opacity: 0});
+                        TweenMax.to('#screen4', 0.5, {marginLeft: 296});
+                        TweenMax.to('#market-label-3', 0.5, {x: 0, opacity: 0});
                     });
 
     /* ScrollToPlugin stuff */
