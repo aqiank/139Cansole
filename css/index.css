@@ -2,13 +2,13 @@
  * General *
  ***********/
 @font-face {
-	font-family: "Cabin";
-	src: url("../fonts/Cabin-Regular.otf");
+	font-family: 'Cabin';
+	src: url('../fonts/Cabin-Regular.otf');
 }
 
 @font-face {
-	font-family: "pixelmix";
-	src: url("../fonts/pixelmix.ttf");
+	font-family: 'pixelmix';
+	src: url('../fonts/pixelmix.ttf');
 }
 
 html, body {
@@ -18,7 +18,7 @@ html, body {
 }
 
 h1, h2, h3, p, li {
-	font-family: "Cabin";
+	font-family: 'Cabin';
 }
 
 a {
@@ -125,7 +125,7 @@ a {
     display: inline-block;
     margin: 0 auto;
     color: #f3f3f3;
-    font-family: "pixelmix";
+    font-family: 'pixelmix';
     font-size: 2.5em;
 }
 

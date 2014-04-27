@@ -64,7 +64,7 @@ function Animation(container, path, type, count, onLoad) {
 function initializeScrollMagic() {
     controller = new ScrollMagic({
         globalSceneOptions: {
-            triggerHook: "onLeave"
+            triggerHook: 'onLeave'
         }
     });
 
@@ -76,7 +76,7 @@ function initializeScrollMagic() {
         if (indicatorId != activeIndicatorId)
             TweenMax.to(indicatorId, 0.5, {opacity: 0.8});
 
-        TweenMax.to(indicatorId + " p", 0.5, {opacity: 1});
+        TweenMax.to(indicatorId + ' p', 0.5, {opacity: 1});
     });
 
     $('.page-indicator').mouseleave(function() {
@@ -84,7 +84,7 @@ function initializeScrollMagic() {
         if (indicatorId != activeIndicatorId)
             TweenMax.to($(indicatorId), 0.5, {opacity: 0.2});
         
-        TweenMax.to(indicatorId + " p", 0.5, {opacity: 0});
+        TweenMax.to(indicatorId + ' p', 0.5, {opacity: 0});
     });
 
     $(window).scroll(function() {
@@ -99,38 +99,38 @@ function initializeScrollMagic() {
      * Home *
      ********/
     new TimelineMax()
-          .add(TweenMax.fromTo('#step1', 0.5, {y: "100", opacity: 0}, {y: "0", opacity: 1}))
-          .add(TweenMax.fromTo('#step2', 0.5, {y: "100", opacity: 0}, {y: "0", opacity: 1}))
-          .add(TweenMax.fromTo('#step3', 0.5, {y: "100", opacity: 0}, {y: "0", opacity: 1}))
-          .add(TweenMax.fromTo('#step4', 0.5, {y: "100", opacity: 0}, {y: "0", opacity: 1, onComplete: function() {
-                  var scene = new ScrollScene({triggerElement: "#pin", duration: 200, offset: 270})
+          .add(TweenMax.fromTo('#step1', 0.5, {y: '100', opacity: 0}, {y: '0', opacity: 1}))
+          .add(TweenMax.fromTo('#step2', 0.5, {y: '100', opacity: 0}, {y: '0', opacity: 1}))
+          .add(TweenMax.fromTo('#step3', 0.5, {y: '100', opacity: 0}, {y: '0', opacity: 1}))
+          .add(TweenMax.fromTo('#step4', 0.5, {y: '100', opacity: 0}, {y: '0', opacity: 1, onComplete: function() {
+                  var scene = new ScrollScene({triggerElement: '#pin', duration: 200, offset: 270})
                                   .addTo(controller);
                   var tween = new TimelineMax()
-                                  .add(TweenMax.fromTo('#step4', 1, {y: "0", opacity: 1}, {y: "100", opacity: 0}))
-                                  .add(TweenMax.fromTo('#step3', 1, {y: "0", opacity: 1}, {y: "100", opacity: 0}))
-                                  .add(TweenMax.fromTo('#step2', 1, {y: "0", opacity: 1}, {y: "100", opacity: 0}))
-                                  .add(TweenMax.fromTo('#step1', 1, {y: "0", opacity: 1}, {y: "100", opacity: 0}));
+                                  .add(TweenMax.fromTo('#step4', 1, {y: '0', opacity: 1}, {y: '100', opacity: 0}))
+                                  .add(TweenMax.fromTo('#step3', 1, {y: '0', opacity: 1}, {y: '100', opacity: 0}))
+                                  .add(TweenMax.fromTo('#step2', 1, {y: '0', opacity: 1}, {y: '100', opacity: 0}))
+                                  .add(TweenMax.fromTo('#step1', 1, {y: '0', opacity: 1}, {y: '100', opacity: 0}));
                   scene.setTween(tween);
           }}));
   
-    scene = new ScrollScene({triggerElement: "#pin", duration: 600})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 600})
                   .addTo(controller);
     tween = new TimelineMax()
-                  .add([TweenMax.to("#animation-frames", 1, {y: -200}),
-                        TweenMax.to("#can-shadow-a", 0.5, {alpha: 0})])
-                  .add(TweenMax.to("#animation-frames", 1, {y: 0}));
+                  .add([TweenMax.to('#animation-frames', 1, {y: -200}),
+                        TweenMax.to('#can-shadow-a', 0.5, {alpha: 0})])
+                  .add(TweenMax.to('#animation-frames', 1, {y: 0}));
     scene.setTween(tween);
     
-    new ScrollScene({triggerElement: "#pin", duration: 620})
+    new ScrollScene({triggerElement: '#pin', duration: 620})
                     .addTo(controller)
-                    .on("progress", function(e) {
+                    .on('progress', function(e) {
                         can_animation.gotoFrame(Math.floor(e.progress * 15));
                     })
-                    .on("enter", function(e) {
+                    .on('enter', function(e) {
                         TweenMax.to('#home-indicator', 0.5, {opacity: 1});
                         activeIndicatorId = '#home-indicator';
                     })
-                    .on("leave", function(e) {
+                    .on('leave', function(e) {
                         if (controller.scrollPos() >= 100)
                             TweenMax.to('#home-indicator', 0.5, {opacity: 0.2});
                     });
@@ -138,130 +138,130 @@ function initializeScrollMagic() {
     /*********
      * About *
      *********/
-    scene = new ScrollScene({triggerElement: "#pin", duration: 300, offset: 620})
-                    .setPin("#all")
+    scene = new ScrollScene({triggerElement: '#pin', duration: 300, offset: 620})
+                    .setPin('#all')
                     .addTo(controller)
-                    .on("enter", function(e) {
+                    .on('enter', function(e) {
                         TweenMax.to('#about-indicator', 0.5, {opacity: 1});
                         activeIndicatorId = '#about-indicator';
                     })
-                    .on("leave", function(e) {
+                    .on('leave', function(e) {
                         TweenMax.to('#about-indicator', 0.5, {opacity: 0.2});
                     });
-    scene = new ScrollScene({triggerElement: "#pin", duration: 1100, offset: 450})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 1100, offset: 450})
                     .addTo(controller);
     tween = new TimelineMax()
-            .add(TweenMax.fromTo("#can-shadow-b", 0.25, {alpha: 0}, {alpha: 1}))
-            .add(TweenMax.to("#can-shadow-b", 0.5, {alpha: 1}))
-            .add(TweenMax.to("#can-shadow-b", 0.1, {alpha: 0}));
+            .add(TweenMax.fromTo('#can-shadow-b', 0.25, {alpha: 0}, {alpha: 1}))
+            .add(TweenMax.to('#can-shadow-b', 0.5, {alpha: 1}))
+            .add(TweenMax.to('#can-shadow-b', 0.1, {alpha: 0}));
     scene.setTween(tween);
 
-    scene = new ScrollScene({triggerElement: "#pin", duration: 1400, offset: 290})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 1400, offset: 290})
                     .addTo(controller);
     tween = new TimelineMax()
-            .add(TweenMax.fromTo("#about-content", 0.25, {x: -100, alpha: 0}, {x: 0, alpha: 1}))
-            .add(TweenMax.to("#about-content", 0.5, {x: 0, alpha: 1}))
-            .add(TweenMax.to("#about-content", 0.1, {x: -100, alpha: 0}));
+            .add(TweenMax.fromTo('#about-content', 0.25, {x: -100, alpha: 0}, {x: 0, alpha: 1}))
+            .add(TweenMax.to('#about-content', 0.5, {x: 0, alpha: 1}))
+            .add(TweenMax.to('#about-content', 0.1, {x: -100, alpha: 0}));
     scene.setTween(tween);
     
     /***********************
      * Transition: Product *
      ***********************/
-    scene = new ScrollScene({triggerElement: "#pin", duration: 500, offset: 150, triggerHook: "onEnter"})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 500, offset: 150, triggerHook: 'onEnter'})
                     .addTo(controller);
-    tween = TweenMax.fromTo("#transition-product-a", 1, {y: -200, opacity: 0}, {ease: Quad.easeIn, y: 0, opacity: 1});
+    tween = TweenMax.fromTo('#transition-product-a', 1, {y: -200, opacity: 0}, {ease: Quad.easeIn, y: 0, opacity: 1});
     scene.setTween(tween);
 
-    scene = new ScrollScene({triggerElement: "#pin", duration: 5000, offset: 900, triggerHook: "onEnter"})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 5000, offset: 900, triggerHook: 'onEnter'})
                     .addTo(controller);
-    tween = TweenMax.fromTo("#transition-product-text", 1, {y: 100}, {y: -900});
+    tween = TweenMax.fromTo('#transition-product-text', 1, {y: 100}, {y: -900});
     scene.setTween(tween);
 
-    scene = new ScrollScene({triggerElement: "#pin", duration: 200, offset: 1350, triggerHook: "onEnter"})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 200, offset: 1350, triggerHook: 'onEnter'})
                     .addTo(controller);
-    tween = TweenMax.to("#transition-product-b", 1, {opacity: 0});
+    tween = TweenMax.to('#transition-product-b', 1, {opacity: 0});
     scene.setTween(tween);
 
     /***********
      * Product *
      ***********/
-    scene = new ScrollScene({triggerElement: "#pin", duration: 1400, offset: 2150})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 1400, offset: 2150})
                     .addTo(controller);
     tween = new TimelineMax()
-                    .add(TweenMax.to("#can-shadow-c", 1, {opacity: 1}))
-                    .add(TweenMax.to("#can-shadow-c", 2, {opacity: 1}))
-                    .add(TweenMax.to("#can-shadow-c", 1, {opacity: 0}));
+                    .add(TweenMax.to('#can-shadow-c', 1, {opacity: 1}))
+                    .add(TweenMax.to('#can-shadow-c', 2, {opacity: 1}))
+                    .add(TweenMax.to('#can-shadow-c', 1, {opacity: 0}));
     scene.setTween(tween);
     
-    scene = new ScrollScene({triggerElement: "#pin", duration: 1400, offset: 2000})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 1400, offset: 2000})
                     .addTo(controller)
-                    .on("enter", function(e) {
-                        TweenMax.to("#teensy", 1, {height: "505px"});
+                    .on('enter', function(e) {
+                        TweenMax.to('#teensy', 1, {height: '505px'});
                     })
-                    .on("leave", function(e) {
-                        TweenMax.to("#teensy", 1, {height: "0px"});
+                    .on('leave', function(e) {
+                        TweenMax.to('#teensy', 1, {height: '0px'});
                     });
 
-    scene = new ScrollScene({triggerElement: "#pin", duration: 1200, offset: 2200})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 1200, offset: 2200})
                     .addTo(controller)
-                    .on("enter", function(e) {
-                        TweenMax.to("#bluetooth", 1, {height: "505px"});
+                    .on('enter', function(e) {
+                        TweenMax.to('#bluetooth', 1, {height: '505px'});
                     })
-                    .on("leave", function(e) {
-                        TweenMax.to("#bluetooth", 1, {height: "0px"});
+                    .on('leave', function(e) {
+                        TweenMax.to('#bluetooth', 1, {height: '0px'});
                     });
 
-    scene = new ScrollScene({triggerElement: "#pin", duration: 1000, offset: 2400})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 1000, offset: 2400})
                     .addTo(controller)
-                    .on("enter", function(e) {
-                        TweenMax.fromTo("#sdcard", 1,
-                                        {height: "0px", y: "505", backgroundPosition: "0px -505px"},
-                                        {height: "505px", y: "0", backgroundPosition: "0px 0px"});
+                    .on('enter', function(e) {
+                        TweenMax.fromTo('#sdcard', 1,
+                                        {height: '0px', y: '505', backgroundPosition: '0px -505px'},
+                                        {height: '505px', y: '0', backgroundPosition: '0px 0px'});
                     })
-                    .on("leave", function(e) {
-                        TweenMax.fromTo("#sdcard", 1,
-                                        {height: "505px", y: "0", backgroundPosition: "0px 0px"},
-                                        {height: "0px", y: "505", backgroundPosition: "0px -505px"});
+                    .on('leave', function(e) {
+                        TweenMax.fromTo('#sdcard', 1,
+                                        {height: '505px', y: '0', backgroundPosition: '0px 0px'},
+                                        {height: '0px', y: '505', backgroundPosition: '0px -505px'});
                     });
 
-    scene = new ScrollScene({triggerElement: "#pin", duration: 800, offset: 2600})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 800, offset: 2600})
                     .addTo(controller)
-                    .on("enter", function(e) {
-                        TweenMax.fromTo("#lipo", 1,
-                                        {height: "0px", y: "505", backgroundPosition: "0px -505px"},
-                                        {height: "505px", y: "0", backgroundPosition: "0px 0px"});
+                    .on('enter', function(e) {
+                        TweenMax.fromTo('#lipo', 1,
+                                        {height: '0px', y: '505', backgroundPosition: '0px -505px'},
+                                        {height: '505px', y: '0', backgroundPosition: '0px 0px'});
                     })
-                    .on("leave", function(e) {
-                        TweenMax.fromTo("#lipo", 1,
-                                        {height: "505px", y: "0", backgroundPosition: "0px 0px"},
-                                        {height: "0px", y: "505", backgroundPosition: "0px -505px"});
+                    .on('leave', function(e) {
+                        TweenMax.fromTo('#lipo', 1,
+                                        {height: '505px', y: '0', backgroundPosition: '0px 0px'},
+                                        {height: '0px', y: '505', backgroundPosition: '0px -505px'});
                     });
 
-    scene = new ScrollScene({triggerElement: "#pin", duration: 600, offset: 2800})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 600, offset: 2800})
                     .addTo(controller)
-                    .on("enter", function(e) {
-                        TweenMax.fromTo("#charger", 1,
-                                        {height: "0px", y: "505", backgroundPosition: "0px -505px"},
-                                        {height: "505px", y: "0", backgroundPosition: "0px 0px"});
+                    .on('enter', function(e) {
+                        TweenMax.fromTo('#charger', 1,
+                                        {height: '0px', y: '505', backgroundPosition: '0px -505px'},
+                                        {height: '505px', y: '0', backgroundPosition: '0px 0px'});
                     })
-                    .on("leave", function(e) {
-                        TweenMax.fromTo("#charger", 1,
-                                        {height: "505px", y: "0", backgroundPosition: "0px 0px"},
-                                        {height: "0px", y: "505", backgroundPosition: "0px -505px"});
+                    .on('leave', function(e) {
+                        TweenMax.fromTo('#charger', 1,
+                                        {height: '505px', y: '0', backgroundPosition: '0px 0px'},
+                                        {height: '0px', y: '505', backgroundPosition: '0px -505px'});
                     });
 
-    new ScrollScene({triggerElement: "#pin", duration: 1020, offset: 2200})
-                    .setPin("#all")
+    new ScrollScene({triggerElement: '#pin', duration: 1020, offset: 2200})
+                    .setPin('#all')
                     .addTo(controller)
-                    .on("enter", function(e) {
+                    .on('enter', function(e) {
                         TweenMax.to('#product-indicator', 0.5, {opacity: 1});
                         activeIndicatorId = '#product-indicator';
                     })
-                    .on("leave", function(e) {
+                    .on('leave', function(e) {
                         TweenMax.to('#product-indicator', 0.5, {opacity: 0.2});
                     });
 
-    scene = new ScrollScene({triggerElement: "#pin", duration: 2000, offset: 2000})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 2000, offset: 2000})
                     .addTo(controller);
     tween = new TimelineMax()
                     .add(TweenMax.fromTo('#product-content', 0.25, {x: -100, opacity: 0}, {x: 0, opacity: 1}))
@@ -269,103 +269,103 @@ function initializeScrollMagic() {
                     .add(TweenMax.to('#product-content', 0.1, {x: -100, opacity: 0}));
     scene.setTween(tween);
 
-    new ScrollScene({triggerElement: "#pin", duration: 620, offset: 1600})
+    new ScrollScene({triggerElement: '#pin', duration: 620, offset: 1600})
                     .addTo(controller)
-                    .on("progress", function(e) {
+                    .on('progress', function(e) {
                         can_animation.gotoFrame(15 + Math.floor(e.progress * 25));
                     });
 
     /**********************
      * Transition: App    *
      **********************/
-    scene = new ScrollScene({triggerElement: "#pin", duration: 1500, offset: 3250, triggerHook: "onEnter"})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 1500, offset: 3250, triggerHook: 'onEnter'})
                     .addTo(controller);
-    tween = TweenMax.to("#transition-app", 1, {backgroundPosition: "-2800px 0px"});
+    tween = TweenMax.to('#transition-app', 1, {backgroundPosition: '-2800px 0px'});
     scene.setTween(tween);
 
     /*******
      * App *
      *******/
-    new ScrollScene({triggerElement: "#app", duration: 620})
-                    .setPin("#app", {pushFollowers: false})
+    new ScrollScene({triggerElement: '#app', duration: 620})
+                    .setPin('#app', {pushFollowers: false})
                     .addTo(controller)
-                    .on("enter", function(e) {
+                    .on('enter', function(e) {
                         TweenMax.to('#app-indicator', 0.5, {opacity: 1});
                         activeIndicatorId = '#app-indicator';
                     })
-                    .on("leave", function(e) {
+                    .on('leave', function(e) {
                         TweenMax.to('#app-indicator', 0.5, {opacity: 0.2});
                     });
-    scene = new ScrollScene({triggerElement: "#pin", duration: 620, offset: 3700})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 620, offset: 3700})
                     .addTo(controller)
-                    .on("progress", function(e) {
+                    .on('progress', function(e) {
                         can_animation.gotoFrame(40 + Math.floor(e.progress * 62));
                     });
    
-    scene = new ScrollScene({triggerElement: "#pin", duration: 1300, offset: 4050})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 1300, offset: 4050})
                     .addTo(controller);
     tween = new TimelineMax()
                     .add(TweenMax.fromTo('#app-content', 1, {x: -100, opacity: 0}, {x: 0, opacity: 1}))
-                    .add(TweenMax.to("#app-content", 3, {alpha: 1}))
-                    .add(TweenMax.to("#app-content", 1, {alpha: 0}));
+                    .add(TweenMax.to('#app-content', 3, {alpha: 1}))
+                    .add(TweenMax.to('#app-content', 1, {alpha: 0}));
     scene.setTween(tween);
 
-    scene = new ScrollScene({triggerElement: "#pin", duration: 1000, offset: 4400, triggerHook: "onEnter"})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 1000, offset: 4400, triggerHook: 'onEnter'})
                     .addTo(controller);
     tween = new TimelineMax()
-                    .add(TweenMax.to("#can-shadow-d", 1, {opacity: 1}))
-                    .add(TweenMax.to("#can-shadow-d", 2, {opacity: 1}))
-                    .add(TweenMax.to("#can-shadow-d", 1, {opacity: 0}));
+                    .add(TweenMax.to('#can-shadow-d', 1, {opacity: 1}))
+                    .add(TweenMax.to('#can-shadow-d', 2, {opacity: 1}))
+                    .add(TweenMax.to('#can-shadow-d', 1, {opacity: 0}));
     scene.setTween(tween);
     
     /**********************
      * Transition: Market *
      **********************/
-    scene = new ScrollScene({triggerElement: "#pin", duration: 500, offset: 4000, triggerHook: "onEnter"})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 500, offset: 4000, triggerHook: 'onEnter'})
                     .addTo(controller)
                     .on('enter', function(e) {
                         $('html, body').css('background', '#222');
                     });
-    tween = TweenMax.fromTo("#transition-market-a", 1, {opacity: 0}, {opacity: 1});
+    tween = TweenMax.fromTo('#transition-market-a', 1, {opacity: 0}, {opacity: 1});
     scene.setTween(tween);
     
-    scene = new ScrollScene({triggerElement: "#pin", duration: 250, offset: 4800, triggerHook: "onEnter"})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 250, offset: 4800, triggerHook: 'onEnter'})
                     .addTo(controller);
-    tween = TweenMax.to("#transition-market-b", 1, {opacity: 0});
+    tween = TweenMax.to('#transition-market-b', 1, {opacity: 0});
     scene.setTween(tween);
 
-    scene = new ScrollScene({triggerElement: "#pin", duration: 250, offset: 4800, triggerHook: "onEnter"})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 250, offset: 4800, triggerHook: 'onEnter'})
                     .addTo(controller)
-                    .on("progress", function(e) {
+                    .on('progress', function(e) {
                         market_animation.gotoFrame(Math.floor(e.progress * 9));
                     });
      
     /**********
      * Market *
      **********/
-    new ScrollScene({triggerElement: "#market", duration: 2480})
-                    .setPin("#market")
+    new ScrollScene({triggerElement: '#market', duration: 2480})
+                    .setPin('#market')
                     .addTo(controller)
-                    .on("enter", function(e) {
+                    .on('enter', function(e) {
                         TweenMax.to('#market-indicator', 0.5, {opacity: 1});
                         activeIndicatorId = '#market-indicator';
 
                         $('html, body').css('background', '#222');
                     })
-                    .on("leave", function(e) {
+                    .on('leave', function(e) {
                         TweenMax.to('#market-indicator', 0.5, {opacity: 0.2});
                     });
     
-    scene = new ScrollScene({triggerElement: "#pin", duration: 1000, offset: 5900, triggerHook: "onEnter"})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 1000, offset: 5900, triggerHook: 'onEnter'})
                     .addTo(controller);
     tween = new TimelineMax()
-                    .add(TweenMax.fromTo("#can-shadow-e", 1, {opacity: 0}, {opacity: 1}))
-                    .add(TweenMax.to("#can-shadow-e", 2, {opacity: 1}))
+                    .add(TweenMax.fromTo('#can-shadow-e', 1, {opacity: 0}, {opacity: 1}))
+                    .add(TweenMax.to('#can-shadow-e', 2, {opacity: 1}))
     scene.setTween(tween);
 
-    new ScrollScene({triggerElement: "#pin", duration: 620, offset: 5300, triggerHook: "onEnter"})
+    new ScrollScene({triggerElement: '#pin', duration: 620, offset: 5300, triggerHook: 'onEnter'})
                     .addTo(controller)
-                    .on("progress", function(e) {
+                    .on('progress', function(e) {
                         can_animation.gotoFrame(103 + Math.floor(e.progress * 13));
 
                         /* Handle Screenshots */
@@ -378,7 +378,7 @@ function initializeScrollMagic() {
                         }
                     });
 
-    scene = new ScrollScene({triggerElement: "#pin", duration: 1500, offset: 6500, triggerHook: "onEnter"})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 1500, offset: 6500, triggerHook: 'onEnter'})
                     .addTo(controller)
                     .on('enter', function(e) {
                         TweenMax.to('#screen2', 0.5, {marginLeft: 0});
@@ -391,7 +391,7 @@ function initializeScrollMagic() {
                         TweenMax.to('#screen2', 0.5, {marginLeft: 296});
                         TweenMax.to('#market-label-1', 0.5, {x: 0, opacity: 0});
                     });
-    scene = new ScrollScene({triggerElement: "#pin", duration: 500, offset: 7000, triggerHook: "onEnter"})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 500, offset: 7000, triggerHook: 'onEnter'})
                     .addTo(controller)
                     .on('enter', function(e) {
                         TweenMax.to('#screen2', 0.5, {marginLeft: 0});
@@ -405,7 +405,7 @@ function initializeScrollMagic() {
                         TweenMax.to('#screen3', 0.5, {marginLeft: 296});
                         TweenMax.to('#market-label-2', 0.5, {x: 0, opacity: 0});
                     });
-    scene = new ScrollScene({triggerElement: "#pin", duration: 500, offset: 7500, triggerHook: "onEnter"})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 500, offset: 7500, triggerHook: 'onEnter'})
                     .addTo(controller)
                     .on('enter', function(e) {
                         TweenMax.to('#screen2', 0.5, {marginLeft: 0});
@@ -423,14 +423,14 @@ function initializeScrollMagic() {
                     });
 
     /* ScrollToPlugin stuff */
-    $(document).on("click", "a[href^=#]", function (e) {
-                var id = $(this).attr("href"), $elem = $(id);
+    $(document).on('click', 'a[href^=#]', function (e) {
+                var id = $(this).attr('href'), $elem = $(id);
                 if ($elem.length > 0) {
                     e.preventDefault();
                     TweenMax.to(window, 1, {scrollTo: {y: $elem.offset().top}});
                     if (window.history && window.history.pushState) {
                         // if supported by the browser we can even update the URL.
-                        history.pushState("", document.title, id);
+                        history.pushState('', document.title, id);
                     }
                 }
             });
@@ -440,9 +440,9 @@ $(document).ready(function() {
     progress_bar = new ProgressBar(
             127,
             function(progress) {
-                $('#progress').html("" + Math.round(progress * 139));
-                TweenMax.to('#loading-can-switch', 1, {rotation: "" + (180 * progress), transformOrigin: "center 75%"});
-                TweenMax.to('#loading-screen', 1, {width: "" + (100 * progress) + "%"});
+                $('#progress').html('' + Math.round(progress * 139));
+                TweenMax.to('#loading-can-switch', 1, {rotation: '' + (180 * progress), transformOrigin: 'center 75%'});
+                TweenMax.to('#loading-screen', 1, {width: '' + (100 * progress) + '%'});
             },
             function() {
                 $('#loading-screen-container').fadeOut(1000);
