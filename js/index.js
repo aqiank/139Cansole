@@ -180,7 +180,7 @@ function initializeScrollMagic() {
     /***********
      * Product *
      ***********/
-    scene = new ScrollScene({triggerElement: '#pin', duration: 1400, offset: 2150})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 1400, offset: 2050})
                     .addTo(controller);
     tween = new TimelineMax()
                     .add(TweenMax.to('#can-shadow-c', 1, {opacity: 1}))
@@ -264,7 +264,7 @@ function initializeScrollMagic() {
                     .add(TweenMax.to('#product-content', 0.1, {x: -100, opacity: 0}));
     scene.setTween(tween);
 
-    new ScrollScene({triggerElement: '#pin', duration: 620, offset: 1600})
+    new ScrollScene({triggerElement: '#pin', duration: 620, offset: 1700})
                     .addTo(controller)
                     .on('progress', function(e) {
                         can_animation.gotoFrame(15 + Math.floor(e.progress * 25));
@@ -291,7 +291,7 @@ function initializeScrollMagic() {
                     .on('leave', function(e) {
                         TweenMax.to('#app-indicator', 0.5, {opacity: 0.2});
                     });
-    scene = new ScrollScene({triggerElement: '#pin', duration: 620, offset: 3700})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 620, offset: 3800})
                     .addTo(controller)
                     .on('progress', function(e) {
                         can_animation.gotoFrame(40 + Math.floor(e.progress * 62));
@@ -305,7 +305,7 @@ function initializeScrollMagic() {
                     .add(TweenMax.to('#app-content', 1, {alpha: 0}));
     scene.setTween(tween);
 
-    scene = new ScrollScene({triggerElement: '#pin', duration: 1000, offset: 4400, triggerHook: 'onEnter'})
+    scene = new ScrollScene({triggerElement: '#pin', duration: 1000, offset: 4300, triggerHook: 'onEnter'})
                     .addTo(controller);
     tween = new TimelineMax()
                     .add(TweenMax.to('#can-shadow-d', 1, {opacity: 1}))
@@ -421,8 +421,9 @@ function initializeScrollMagic() {
     $(document).on('click', 'a[href^=#]', function (e) {
                 var id = $(this).attr('href'), $elem = $(id);
                 if ($elem.length > 0) {
+                    var delta = Math.abs($elem.offset().top - $(window).scrollTop());
                     e.preventDefault();
-                    TweenMax.to(window, 1, {scrollTo: {y: $elem.offset().top}});
+                    TweenMax.to(window, 5 * (delta / $(document).height()), {scrollTo: {y: $elem.offset().top}});
                     if (window.history && window.history.pushState) {
                         // if supported by the browser we can even update the URL.
                         history.pushState('', document.title, id);
