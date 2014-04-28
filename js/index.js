@@ -376,45 +376,45 @@ function initializeScrollMagic() {
     scene = new ScrollScene({triggerElement: '#pin', duration: 1500, offset: 6500, triggerHook: 'onEnter'})
                     .addTo(controller)
                     .on('enter', function(e) {
-                        TweenMax.to('#screen2', 0.5, {marginLeft: 0});
-                        TweenMax.to('#market-label-1', 0.5, {x: 100, opacity: 1});
+                        TweenMax.to('#screen2', 0.5, {marginLeft: 0, ease: Elastic.easeOut});
+                        TweenMax.to('#market-label-1', 0.5, {x: 100, opacity: 1, ease: Elastic.easeOut});
 
                     })
                     .on('leave', function(e) {
                         if ($(window).scrollTop() > 6910)
                             return;
-                        TweenMax.to('#screen2', 0.5, {marginLeft: 296});
-                        TweenMax.to('#market-label-1', 0.5, {x: 0, opacity: 0});
+                        TweenMax.to('#screen2', 0.5, {marginLeft: 296, ease: Elastic.easeIn});
+                        TweenMax.to('#market-label-1', 0.5, {x: 0, opacity: 0, ease: Elastic.easeIn});
                     });
     scene = new ScrollScene({triggerElement: '#pin', duration: 500, offset: 7000, triggerHook: 'onEnter'})
                     .addTo(controller)
                     .on('enter', function(e) {
-                        TweenMax.to('#screen2', 0.5, {marginLeft: 0});
-                        TweenMax.to('#market-label-1', 0.5, {x: 100, opacity: 1});
-                        TweenMax.to('#screen3', 0.5, {marginLeft: 0});
-                        TweenMax.to('#market-label-2', 0.5, {x: 100, opacity: 1});
+                        TweenMax.to('#screen2', 0.5, {marginLeft: 0, ease: Elastic.easeOut});
+                        TweenMax.to('#market-label-1', 0.5, {x: 100, opacity: 1, ease: Elastic.easeOut});
+                        TweenMax.to('#screen3', 0.5, {marginLeft: 0, ease: Elastic.easeOut});
+                        TweenMax.to('#market-label-2', 0.5, {x: 100, opacity: 1, ease: Elastic.easeOut});
                     })
                     .on('leave', function(e) {
                         if ($(window).scrollTop() > 7260)
                             return;
-                        TweenMax.to('#screen3', 0.5, {marginLeft: 296});
-                        TweenMax.to('#market-label-2', 0.5, {x: 0, opacity: 0});
+                        TweenMax.to('#screen3', 0.5, {marginLeft: 296, ease: Elastic.easeIn});
+                        TweenMax.to('#market-label-2', 0.5, {x: 0, opacity: 0, ease: Elastic.easeIn});
                     });
     scene = new ScrollScene({triggerElement: '#pin', duration: 500, offset: 7500, triggerHook: 'onEnter'})
                     .addTo(controller)
                     .on('enter', function(e) {
-                        TweenMax.to('#screen2', 0.5, {marginLeft: 0});
-                        TweenMax.to('#market-label-1', 0.5, {x: 100, opacity: 1});
-                        TweenMax.to('#screen3', 0.5, {marginLeft: 0});
-                        TweenMax.to('#market-label-2', 0.5, {x: 100, opacity: 1});
-                        TweenMax.to('#screen4', 0.5, {marginLeft: 0});
-                        TweenMax.to('#market-label-3', 0.5, {x: 100, opacity: 1});
+                        TweenMax.to('#screen2', 0.5, {marginLeft: 0, ease: Elastic.easeOut});
+                        TweenMax.to('#market-label-1', 0.5, {x: 100, opacity: 1, ease: Elastic.easeOut});
+                        TweenMax.to('#screen3', 0.5, {marginLeft: 0, ease: Elastic.easeOut});
+                        TweenMax.to('#market-label-2', 0.5, {x: 100, opacity: 1, ease: Elastic.easeOut});
+                        TweenMax.to('#screen4', 0.5, {marginLeft: 0, ease: Elastic.easeOut});
+                        TweenMax.to('#market-label-3', 0.5, {x: 100, opacity: 1, ease: Elastic.easeOut});
                     })
                     .on('leave', function(e) {
                         if ($(window).scrollTop() > 7610)
                             return;
-                        TweenMax.to('#screen4', 0.5, {marginLeft: 296});
-                        TweenMax.to('#market-label-3', 0.5, {x: 0, opacity: 0});
+                        TweenMax.to('#screen4', 0.5, {marginLeft: 296, ease: Elastic.easeIn});
+                        TweenMax.to('#market-label-3', 0.5, {x: 0, opacity: 0, ease: Elastic.easeIn});
                     });
 
     /* ScrollToPlugin stuff */
