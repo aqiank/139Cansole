@@ -3,6 +3,19 @@
 <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+
+    <!-- Redirect to Mobile Website -->
+    <script>
+        function isMobile() {
+            var index = navigator.appVersion.indexOf('Mobile');
+            return index >= 0;
+        }
+
+        if (isMobile()) {
+            window.location.replace('mobile.html');
+        }
+    </script>
+
     <link href='css/reset.css' rel='stylesheet'>
     <link href='css/index.css' rel='stylesheet'>
     <script type='text/javascript' src='js/jquery.min.js'></script>

@@ -1,0 +1,300 @@
+/***********
+ * General *
+ ***********/
+@font-face {
+	font-family: 'Cabin';
+	src: url('../fonts/Cabin-Regular.otf');
+}
+
+@font-face {
+	font-family: 'pixelmix';
+	src: url('../fonts/pixelmix.ttf');
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #f3f3f3;
+}
+
+h1, h2, h3, p, li {
+	font-family: 'Cabin';
+}
+
+a {
+    text-decoration: none;
+    color: #222;
+}
+
+#all {
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.content img {
+    max-width: 100%% !important;
+    margin: 16px auto;
+}
+
+.text {
+    padding: 32px;
+}
+
+.headline h1 {
+    margin: 8px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 1.25em;
+    line-height: 1.25em;
+}
+
+.description p {
+    margin: 8px;
+    letter-spacing: 1px;
+    font-size: 0.8em;
+    line-height: 1.5em;
+}
+
+.layer1 {
+    z-index: 1;
+}
+
+.layer2 {
+    z-index: 2;
+}
+
+.layer3 {
+    z-index: 3;
+}
+
+.layer4 {
+    z-index: 4;
+}
+
+.inline-center {
+    text-align: center;
+}
+
+.hcenter {
+    display: inline-block;
+}
+
+.table {
+    height: 100%;
+    display: table;
+}
+
+.vcenter {
+        display: table-cell;
+        vertical-align: middle;
+        height: 100%;
+}
+
+.vbottom {
+        display: table-cell;
+        vertical-align: bottom;
+        height: 100%;
+}
+
+/*******************
+ * Page Indicators *
+ *******************/
+#page-indicators {
+    position: fixed;
+    top: 33%;
+    right: 1%;
+}
+
+.page-indicator {
+    display: block;
+    position: relative;
+    opacity: 0.2;
+}
+
+.page-indicator img {
+    display: inline-block;
+    clear: both;
+    float: right;
+    padding: 5px;
+}
+
+.page-indicator p {
+    display: inline-block;
+    opacity: 0;
+    float: right;
+    font-size: 0.6em;
+    color: #f00;
+}
+
+/***********
+ * Anchors *
+ ***********/
+#home-trigger {
+    position: relative;
+    top: 0px;
+}
+ 
+#about-trigger {
+    position: relative;
+    top: 800px;
+}
+ 
+#product-trigger {
+    position: relative;
+    top: 3000px;
+}
+ 
+#app-trigger {
+    position: relative;
+    top: 4400px;
+}
+ 
+#market-trigger {
+    position: relative;
+    top: 6400px;
+}
+
+/********
+ * Home *
+ ********/
+#home {
+    background: url('../images/mobile/home/bg.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: #fefefe;
+}
+
+#home-sign-up {
+    display: inline-block;
+    border: 2px solid white;
+    margin: 8px;
+    padding: 8px;
+}
+
+/*********
+ * About *
+ *********/
+#about {
+    background: #f3f3f3;
+}
+
+/************************
+ * Transition: Product *
+ ************************/
+#transition-product {
+    background: #f3f3f3;
+}
+
+#transition-product p {
+    color: #f3f3f3;
+}
+
+#transition-product-a {
+    position: relative;
+    background: url('../images/transitions/t2_bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/***********
+ * Product *
+ ***********/
+#product {
+    background: #f3f3f3;
+}
+
+#product img {
+    float: left;
+}
+
+#product a {
+    margin: 16px;
+}
+
+/************************
+ * Transition: App *
+ ************************/
+#transition-app {
+    background: url('../images/transitions/app/longbg.jpg');
+    overflow: hidden;
+}
+
+/*******
+ * App *
+ *******/
+#app {
+    background: url('../images/4_app/bg.jpg');
+    background-size: cover;
+    background-position: center bottom;
+}
+
+/**********************
+ * Transition: Market *
+ **********************/
+#transition-market {
+    background: url('../images/mobile/transitions/market/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#transition-market-a {
+    background: url('../images/mobile/transitions/market/can.png');
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+#transition-market {
+    color: #f3f3f3;
+}
+
+/**********
+ * Market *
+ **********/
+#market {
+    background: url('../images/5_market/bg.jpg');
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+#market-labels > div {
+    float: left;
+    margin: 16px;
+}
+
+/**********
+ * Footer *
+ **********/
+#footer {
+    background: #222;
+    width: 100%;
+}
+
+#footer p {
+    color: #f3f3f3;
+    font-size: 0.7em;
+    text-align: center;
+    line-height: 25px;
+}
+
+#footer img{
+    padding-top: 10px;
+}
+
+#footer-text {
+    width: 100%;
+    padding-top: 16px;
+}
+
