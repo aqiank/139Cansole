@@ -3,351 +3,273 @@
 <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
-
-    <!-- Redirect to Mobile Website -->
-    <script>
-        function isMobile() {
-            var index = navigator.appVersion.indexOf('Mobile');
-            return index >= 0;
-        }
-
-        if (isMobile()) {
-            window.location.replace('mobile.html');
-        }
-    </script>
-
     <link href='css/reset.css' rel='stylesheet'>
     <link href='css/index.css' rel='stylesheet'>
-    <script type='text/javascript' src='js/jquery.min.js'></script>
-    <script type='text/javascript' src='js/TweenMax.min.js'></script>
-    <script type='text/javascript' src='js/TimelineMax.min.js'></script>
-    <script type='text/javascript' src='js/jquery.scrollmagic.min.js'></script>
-    <script type='text/javascript' src='js/ScrollToPlugin.min.js'></script>
-    <script type='text/javascript' src='js/index.js'></script>
-    <!--[if lt IE 9]>
-        <script src='http://html5shiv.googlecode.com/svn/trunk/html5.js'></script>
-    <![endif]-->
 </head>
-<body>
+<body class='default-bg'>
+
     <!-- Loading Screen -->
-    <div id="loading-screen" class="layer4">
+    <div id="loading-screen" class="layer5">
         <div class="table">
-            <div class="vcenter">
+            <div class="table-cell vertical-align-middle">
                 <div id="loading-can" class="table">
-                    <div class="vcenter">
+                    <div class="table-cell vertical-align-middle">
                         <img id="loading-can-switch" src="images/0_loading/can_switch.png">
                     </div>
                 </div>
-                <div id="progress" class="inline-center">
+                <div id="progress" class="inline-block text-align-center">
                     <p>0%</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Animation -->
-    <div class='fixed container layer1'>
-        <div class='transparent-bg content'>
-            <img id='can-shadow-a' src='images/1_home/shadow.png'>
-            <img id='can-shadow-b' src='images/2_about/shadow.png' style='opacity: 0'>
-            <img id='can-shadow-c' src='images/3_product/shadow.png' style='opacity: 0'>
-            <img id='can-shadow-d' src='images/4_app/shadow.png' style='opacity: 0'>
-            <img id='can-shadow-e' src='images/5_market/shadow.png' style='opacity: 0'>
-            <div id='animation-frames'>
-                <!-- Can animation frames will be added here via Javascript -->
-            </div>
-            <div id='teensy' class='product-label'></div>
-            <div id='bluetooth' class='product-label'></div>
-            <div id='sdcard' class='product-label'></div>
-            <div id='lipo' class='product-label'></div>
-            <div id='charger' class='product-label'></div>
+    <!-- Main Nav -->
+    <header id='main-header'>
+        <nav id='main-nav' class='content'>
+            <a href='index.html'>
+                <img id='logo' src='images/nav/logo.png'>
+                <img id='logo_dark' src='images/nav/logo_dark.png'>
+            </a>
+            <ul>
+                <li><a href='#home'>HOME</a></li>
+                <li><a href='#about'>ABOUT</a></li>
+                <li><a href='#product'>PRODUCT</a></li>
+                <li><a href='#app'>DOWNLOAD</a></li>
+                <li><a href='#market'>MARKET</a></li>
+            </ul>
+        </nav>
+    </header>
 
-            <!-- About content -->
-            <div id='about-content'>
-                <div id='about-text' class='inline-center'>
-                    <span class='hcenter'>
-                        <h1 id='about-headline'>A GAMING CONSOLE INSIDE A CAN OF COKE</h1>
-                        <p id='about-description'>
-                            139 CANSOLE IS THE WORLD'S FIRST GAMING CONSOLE DELIVERED TO THE USERS
-                            THROUGH VENDING MACHINES SPREAD AROUND THE WORLD.
-                        </p>
+    <!-- Side Nav -->
+    <nav id='side-nav' class='layer4'>
+        <ul>
+            <li><a href='#home'><img src='images/icons/home.png'><p>Home</p></a></li>
+            <li><a href='#about'><img src='images/icons/about.png'><p>About</p></a></li>
+            <li><a href='#product'><img src='images/icons/product.png'><p>Product</p></a></li>
+            <li><a href='#app'><img src='images/icons/download.png'><p>App</p></a></li>
+            <li><a href='#market'><img src='images/icons/market.png'><p>Market</p></a></li>
+        </ul>
+    </nav>
+
+    <!-- Fixed -->
+    <div class='fixed container layer2 no-pointer-events'>
+        <div class='content'>
+            <img id='can-shadow-a' class='absolute' src='images/can/shadow_a.png' data-0='opacity: 1' data-200='opacity: 0'>
+            <img id='can-shadow-b' class='absolute' src='images/can/shadow_b.png' data-300='opacity: 0' data-620='opacity: 1' data-1200='' data-1340='opacity: 0'>
+            <img id='can-shadow-c' class='absolute' src='images/can/shadow_c.png' data-1700='opacity: 0' data-1860='opacity: 1' data-2480='' data-2580='opacity: 0'>
+            <img id='can-shadow-d' class='absolute' src='images/can/shadow_d.png' data-2950='opacity: 0' data-3000='opacity: 1' data-3720='' data-3820='opacity: 0'>
+            <img id='can-shadow-e' class='absolute' src='images/can/shadow_e.png' data-4200='opacity: 0' data-4240='opacity: 1; top: 50px; left: -50px;'>
+            <div id='animation-a' class='absolute' data-0='transform: left: 0px; top: 0px' data-200='left: 0px; top: -200px' data-620='top: 0px; left: 0px;' data-3620='' data-4240='top: 50px; left: -50px;'></div>
+            <div id='teensy' class='product-label' data-1860='height: 250px' data-1960='height: 505px' data-2450='opacity: 1' data-2500='opacity: 0'></div>
+            <div id='bluetooth' class='product-label' data-1960='height: 250px' data-2060='height: 505px' data-2450='opacity: 1' data-2500='opacity: 0'></div>
+            <div id='sdcard' class='product-label' data-2060='height: 0px; top: 270px; background-position: 0 -270px' data-2160='height: 270px; top: 0px; background-position: 0 0px' data-2450='opacity: 1' data-2500='opacity: 0'></div>
+            <div id='battery' class='product-label' data-2160='height: 0px; top: 276px; background-position: 0 -276px' data-2260='height: 276px; top: 0px; background-position: 0 0px' data-2450='opacity: 1' data-2500='opacity: 0'></div>
+            <div id='charger' class='product-label' data-2260='height: 0px; top: 324px; background-position: 0 -324px' data-2360='height: 324px; top: 0px; background-position: 0 0px' data-2450='opacity: 1' data-2500='opacity: 0'></div>
+            <div id='screens' class='layer4'>
+                <div id='screen-1'></div>
+                <div id='screen-2'></div>
+                <div id='screen-3'></div>
+                <div id='screen-4'></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Home -->
+    <div id='home' class='container responsive home-bg' data-0='top: 0px' data-620='top: -619px'>
+        <div class='content'>
+            <img id='home-can' class='can' src='images/can/home.png'>
+            <div class='text-wrapper layer4'>
+                <p id='home-text-a'>INTRODUCING 139 CANSOLE</p>
+                <h1 id='home-text-b'>GAMING FOR EVERYONE</h1>
+                <a href='#'><h5 id='home-text-c'>SIGN UP</h5></a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Steps -->
+    <div id='steps' class='container responsive no-bg layer4' data-0p='top: 400px' data-100p='top: -619px'>
+        <div class='content'>
+            <div class='table container'>
+                <div class='text-align-center table-cell vertical-align-middle'>
+                    <div id='step-wrapper' class='inline-block'>
+                        <div class='step-wrapper-row'>
+                            <div class='step' id='step1' data-anchor-target='#steps' data-0='opacity: 1' data-400='' data-500='opacity: 0'>
+                                <img src='images/2_about/step1.png'>
+                                <p class='step_desc'>GET YOUR CANSOLE FROM A VENDING MACHINE</p>
+                            </div>
+                            <div class='step' id='step2' data-anchor-target='#steps' data-0='opacity: 1' data-350='' data-450='opacity: 0'>
+                                <img src='images/2_about/step2.png'>
+                                <p class='step_desc'>CONNECT YOUR PHONE TO CANSOLE</p>
+                            </div>
+                        </div>
+                        <div class='step-wrapper-row'>
+                            <div class='step' id='step3' data-anchor-target='#steps' data-0='opacity: 1' data-300='' data-400='opacity: 0'>
+                                <img src='images/2_about/step3.png'>
+                                <p class='step_desc'>START PLAYING GAMES FROM THE MARKET</p>
+                            </div>
+                            <div class='step' id='step4' data-anchor-target='#steps' data-0='opacity: 1' data-250='' data-350='opacity: 0'>
+                                <img src='images/2_about/step4.png'>
+                                <p class='step_desc'>CREATE YOUR OWN GAMES USING GINGEE</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About -->
+    <div id='about' class='container responsive default-bg layer1' data-0='top: 620px' data-620='top: 0px' data-1240='' data-1860='top: -619px'>
+        <div class='content' data-anchor-target='#about' data-0p='opacity: 0' data-620='opacity: 1'>
+            <img id='about-can' class='can' src='images/can/about.png'>
+            <div class='text-wrapper'>
+                <h2 id='about-text-a'>A GAMING CONSOLE <br> INSIDE A CAN OF COKE</h2>
+                <p id='about-text-b'>
+                    139 CANSOLE IS THE WORLD'S FIRST GAMING CONSOLE DELIVERED TO THE USERS
+                    THROUGH VENDING MACHINES SPREAD AROUND THE WORLD.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Photos -->
+    <div id='photos' class='container responsive home-bg layer4' data-0='top: 1240px' data-620='top: 620px' data-1240='' data-1860='top: -619px'>
+        <div id='photos-2' class='container' data-1240='opacity: 1' data-1550='opacity: 0'>
+        </div>
+        <div class='content'>
+            <div class='table'>
+                <div id='photos-text-wrapper' class='table-cell vertical-align-middle'>
+                    <p id='photos-text'>
+                        WE'VE TURNED CALORIES INTO BYTES TO CREATE THE LARGEST PLATFORM OF MICRO
+                        GAMES CREATED BY ANYONE. FOR EVERYONE.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product -->
+    <div id='product' class='container responsive default-bg layer1' data-0='top: 1240px' data-620='top: 620px' data-1240='' data-1860='top: 0px' data-2480='' data-3000='top: -619px'>
+        <div class='content'>
+            <img id='product-can' class='can' src='images/can/product.png'>
+            <div class='text-wrapper' data-1240='opacity: 0' data-1860='opacity: 1'>
+                <h2 id='product-text-a'>BUILD YOUR OWN CONSOLE</h2>
+                <img id='icon-watch' src='images/icons/watch_icon.png'>
+                <a href='#'><p id='product-text-b'>WATCH TUTORIAL</p></a>
+                <img id='icon-download' src='images/icons/download_icon.png'>
+                <a href='#'><p id='product-text-c'>DOWNLOAD</p></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sketches -->
+    <div id='sketches' class='container responsive layer4' data-0='top: 1240px' data-1240='' data-1860='top: 620px; background-position: 0px 0' data-2480='' data-3000='top: -619px; background-position: -2000px 0'>
+    </div>
+
+    <!-- App -->
+    <div id='app-bg' class='container fixed' data-0='top: 1240px' data-1240='' data-1860='620px' data-2480='' data-3000='top: 0px' data-3620='' data-4240='top: -620px'></div>
+    <div id='app' class='container responsive layer1' data-0='top: 1240px' data-1240='' data-1860='620px' data-2480='' data-3000='top: 0px' data-3620='' data-4240='top: -619px'>
+        <div class='content'>
+            <img id='app-can' class='can' src='images/can/app.png'>
+            <div class='text-wrapper'>
+                <h2 id='app-text-a'>DOWNLOAD 139 CANSOLE</h2>
+                <p id='app-text-b'>
+                    BY USING A MOBILE PHONE AS THE SCREEN, IT BECOMES A PORTABLE
+                    GAMING PLATFORM AND CONTROLLER THAT USERS CAN DEVELOP FOR AND
+                    PLAY GAMES ON.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Coming -->
+    <div id='coming' class='container responsive layer4' data-0='top: 1860px' data-2480='' data-3000='top: 620px' data-3620='' data-4240='top: -619px'>
+        <div id='coming-2' class='container' data-3620='opacity: 1' data-3820='opacity: 0'></div>
+        <div class='content'>
+            <img id='coming-can' class='can' src='images/can/coming.png'>
+            <div id='animation-b'></div>
+            <div id='coming-text-wrapper'>
+                <p id='coming-text-a' data-3620='color: rgb(32, 32, 32)' data-3820='color: rgb(219, 219, 219)'>COMING SOON</p>
+                <h2 id='coming-text-b' data-3620='color: rgb(32, 32, 32)' data-3820='color: rgb(219, 219, 219)'>139 GAMES MARKET</h2>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Market -->
+    <div id='market' class='container responsive' data-0p='top: 1240px' data-2480='' data-3620='top: 620px' data-4240='top: 0px'>
+        <div class='content'>
+            <img id='market-can' class='can' src='images/can/market.png'>
+            <div id='screen-menu' class='layer3'>
+                <div class='screen-label' id='screen-label-2' data-3620='opacity: 0' data-3920='' data-4020='opacity: 1'>
+                    <span>
+                        <img class='screen-icon' src='images/icons/icon_market.png'>
+                        <h4 class='screen-title'>139 MARKET</h4>
                     </span>
+                    <div class='clear'></div>
+                    <p class='screen-description'>
+                        DOWNLOAD THE MOST POPULAR 139 GAMES
+                        OR CREATE AND UPLOAD YOUR OWN 139 GAMES.
+                    </p>
+                    <hr>
                 </div>
-            </div>
-            
-            <!-- Product content -->
-            <div id='product-content' class='layer1'>
-                <div id='product-text' >
-                    <h1 id='product-description'>BUILD YOUR OWN CONSOLE</h1>
-                    <img src='images/3_product/watch_icon.png'>
-                    <a href='#'>
-                        <p>WATCH TUTORIAL</p>
-                    </a>
-                    <img src='images/3_product/download_icon.png'>
-                    <a href='#'>
-                        <p>DOWNLOAD</p>
-                    </a>
+                <div class='screen-label' id='screen-label-3' data-3620='opacity: 0' data-4020='' data-4120='opacity: 1'>
+                    <span>
+                        <img class='screen-icon' src='images/icons/icon_rate.png'>
+                        <h4 class='screen-title'>RATE</h4>
+                    </span>
+                    <div class='clear'></div>
+                    <p class='screen-description'>
+                        GIVE YOUR FAVOURITE GAME A RATE AND COMMENT
+                        IF YOU ENJOY IT.
+                    </p>
+                    <hr>
                 </div>
-            </div>
-             
-            <!-- App Content -->
-            <div id='app-content'>
-                <div class='table'>
-                    <div class='vcenter inline-center'>
-                        <span class='hcenter'>
-                            <h1 id='app-headline'>DOWNLOAD 139 CANSOLE</h1>
-                            <p id='app-description'>
-                                BY USING A MOBILE PHONE AS THE SCREEN, IT BECOMES A PORTABLE
-                                GAMING PLATFORM AND CONTROLLER THAT USERS CAN DEVELOP FOR AND
-                                PLAY GAMES ON.
-                            </p>
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Market Content -->
-            <div id='market-content'>
-                <div class='table'>
-                    <div id='market-labels' class='vcenter'>
-                        <div id='market-label-1' style='height: 96px' class='table'>
-                            <div class='vcenter'>
-                                <img src='images/5_market/icon_market.png'>
-                                <p>MARKET</p>
-                            </div>
-                        </div>
-                        <div id='market-label-2' style='height: 96px' class='table'>
-                            <div class='vcenter'>
-                                <img src='images/5_market/icon_rate.png'>
-                                <p>RATE</p>
-                            </div>
-                        </div>
-                        <div id='market-label-3' style='height: 96px' class='table'>
-                            <div class='vcenter'>
-                                <img src='images/5_market/icon_gameplay.png'>
-                                <p>GAMEPLAY</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class='screen-label' id='screen-label-1' data-3620='opacity: 0' data-4120='' data-4220='opacity: 1'>
+                    <span>
+                        <img class='screen-icon' src='images/icons/icon_develop.png'>
+                        <h4 class='screen-title'>DEVELOP</h4>
+                    </span>
+                    <div class='clear'></div>
+                    <p class='screen-description'>
+                        CREATE YOUR OWN MICRO GAMES OR DOWNLOAD
+                        OTHER 139 GAMES AND MODIFY THE GAMEPLAY
+                        BASED ON YOUR PREFERENCE.
+                    </p>
+                    <hr>
                 </div>
             </div>
         </div>
     </div>
     
-    <!-- Navbar -->
-    <div id='navbar-bg' class='layer3'></div>
-    <div id='navbar'>
-        <div class='content'>
-            <a href='index.html'><img id='logo' src='images/navbar/logo.png'></a>
-            <ul>
-                <li><a href='#home-trigger'>HOME</a></li>
-                <li><a href='#about-trigger'>ABOUT</a></li>
-                <li><a href='#product-trigger'>PRODUCT</a></li>
-                <li><a href='#app-trigger'>DOWNLOAD</a></li>
-                <li><a href='#market-trigger'>MARKET</a></li>
-            </ul>
+    <!-- Footer -->
+    <div id='footer' class='responsive' data-0='top: 1240px' data-3620='' data-4240='top: 620px'>
+        <div class='text-align-center'>
+            <p>TERMS | PRIVACY POLICY @ 2014 139 CANSOLE. PRESENTED BY COCA COLA. BBH. GINGEE</p>
+            <p>BOUGHT TO YOU BY</p>
+            <img class='inline-block' src='images/footer/supporters.png'>
+        </div>
+        <div class='text-align-center'>
+            <span class='inline-block'>
+                <img class='inline-block' src='images/footer/fb.png'>
+                <p>Facebook</p>
+            </span>
+            <span class='inline-block'>
+                <img class='inline-block' src='images/footer/twitter.png'>
+                <p>Twitter</p>
+            </span>
         </div>
     </div>
+    
+    <!-- Javascript -->
+    <script type='text/javascript' src='js/jquery.min.js'></script>
+    <script type='text/javascript' src='js/TweenMax.min.js'></script>
+    <script type='text/javascript' src='js/skrollr.min.js'></script>
+    <script type='text/javascript' src='js/index.js'></script>
 
-    <!-- Page Indicators -->
-    <div id='page-indicators' class='layer2'>
-        <a id='home-indicator' class='page-indicator' href='#home-trigger'>
-            <div class='table'>
-                <div class='vcenter'>
-                    <p>HOME</p>
-                </div>
-                <img src='images/navbar/home.png'>
-            </div>
-        </a>
-        <a id='about-indicator' class='page-indicator' href='#about-trigger'>
-            <div class='table'>
-                <div class='vcenter'>
-                    <p>ABOUT</p>
-                </div>
-                <img src='images/navbar/about.png'>
-            </div>
-        </a>
-        <a id='product-indicator' class='page-indicator' href='#product-trigger'>
-            <div class='table'>
-                <div class='vcenter'>
-                    <p>PRODUCT</p>
-                </div>
-                <img src='images/navbar/product.png'>
-            </div>
-        </a>
-        <a id='app-indicator' class='page-indicator' href='#app-trigger'>
-            <div class='table'>
-                <div class='vcenter'>
-                    <p>DOWNLOAD</p>
-                </div>
-                <img src='images/navbar/download.png'>
-            </div>
-        </a>
-        <a id='market-indicator' class='page-indicator' href='#market-trigger'>
-            <div class='table'>
-                <div class='vcenter'>
-                    <p>MARKET</p>
-                </div>
-                <img src='images/navbar/market.png'>
-            </div>
-        </a>
-    </div>
+    <!--[if lt IE 9]>
+        <script src='http://html5shiv.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
 
-    <!-- Anchors for navigation -->
-    <div id='home-trigger'></div>
-    <div id='about-trigger'></div>
-    <div id='product-trigger'></div>
-    <div id='app-trigger'></div>
-    <div id='market-trigger'></div>
-
-    <!-- Slides -->
-    <div id='pin'></div>
-    <div id='all'>
-
-        <!-- Home -->
-        <div id='home' class='container'>
-            <div class='content'>
-                <div id='home-content'>
-                    <div id='home-text' class='inline-center'>
-                        <p style='font-size: 1.25em'>INTRODUCING 139 CANSOLE</p>
-                        <h1 id='home-headline'>GAMING FOR EVERYONE</h1>
-                        <span class='hcenter'>
-                            <p id='home-description'>SIGN UP</p>
-                        </span>
-                    </div>
-                    <div class='inline-center'>
-                        <span id='steps' class='hcenter'>
-                            <div class='step' id='step1'>
-                                <img src='images/2_about/step1.png'>
-                                <p class='step_desc'>GET YOUR CANSOLE FROM A VENDING MACHINE</p>
-                            </div>
-                            <div class='step' id='step2'>
-                                <img src='images/2_about/step2.png'>
-                                <p class='step_desc'>CONNECT YOUR PHONE TO CANSOLE</p>
-                            </div>
-                            <div class='step' id='step3'>
-                                <img src='images/2_about/step3.png'>
-                                <p class='step_desc'>START PLAYING GAMES FROM THE MARKET</p>
-                            </div>
-                            <div class='step' id='step4'>
-                                <img src='images/2_about/step4.png'>
-                                <p class='step_desc'>CREATE YOUR OWN GAMES USING GINGEE</p>
-                            </div>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- About -->
-        <div id='about' class='container'>
-        </div>
-
-        <!-- Transition: Product -->
-         <div id='transition-product' class='container layer1 transition'>
-            <div id='transition-product-a' class='container'>
-                <div id='transition-product-text' class='transition-text table layer1'>
-                    <div class='vcenter no-bg'>
-                        <div class='transition-text-container inline-center'>
-                            <p>
-                                WE'VE TURNED CALORIES INTO BYTES TO CREATE THE LARGEST PLATFORM OF MICRO GAMES
-                                CREATED BY ANYONE. FOR EVERYONE.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div id='transition-product-b' class='container'>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product -->
-        <div id='product' class='container'></div>
-        
-        <!-- Transition: App -->
-        <div id='transition-app' class='container layer1 transition'>
-        </div>
-
-        <!-- App -->
-        <div id='app' class='container'>
-            <div class='content'>
-            </div>
-        </div>
-        
-        <!-- Transition: Market -->
-        <div id='transition-market' class='container'>
-            <div id='transition-market-a' class='container layer1 transition'>
-                <div class='content'>
-                    <div id='transition-market-content-a'>
-                        <div class='inline-center'>
-                            <span class='hcenter'>
-                                <h1 id='transition-market-headline-a'>COMING SOON</h1>
-                                <p id='transition-market-description-a'>
-                                    139 GAMES MARKET
-                                </p>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id='transition-market-b' class='container layer1'>
-                <div class='content'>
-                    <div id='transition-market-content-b'>
-                        <div class='inline-center'>
-                            <span class='hcenter'>
-                                <h1 id='transition-market-headline-b'>COMING SOON</h1>
-                                <p id='transition-market-description-b'>
-                                    139 GAMES MARKET
-                                </p>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id='market-animation-frames' class='container layer1'>
-                <!-- Market animation frames will be added here via Javascript -->
-            </div>
-        </div>
-
-        <!-- Market -->
-        <div id='market' class='container'>
-            <div class='content'>
-                <div id='screenshots'>
-                    <div id='screen1'></div>
-                    <div id='screen2'></div>
-                    <div id='screen3'></div>
-                    <div id='screen4'></div>
-                </div>
-            </div>
-
-            <!-- Footer -->
-            <div id='footer'>
-                <div class='content'>
-                    <div id='footer-text'>
-                        <div class='inline-center'>
-                            <p>TERMS | PRIVACY POLICY @ 2014 139 CANSOLE. PRESENTED BY COCA COLA. BBH. GINGEE</p>
-                            <p>BOUGHT TO YOU BY</p>
-                            <img src='images/footer/supporters.png'>
-                        </div>
-                    </div>
-                    <div id='footer-social'>
-                        <div class='inline-center'>
-                           <span class='hcenter'>
-                                <span style='display:inline-block'>
-                                    <img src='images/footer/fb.png'>
-                                    <p>Facebook</p>
-                                </span>
-                                <span style='display:inline-block'>
-                                    <img src='images/footer/twitter.png'>
-                                    <p>Twitter</p>
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-        
 </body>
-</html>
+</html>0

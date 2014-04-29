@@ -1,33 +1,27 @@
-// ScrollMagic Controller
-var controller;
-
 // Progress Bar
-var progress_bar;
+var progressBar;
 
 // Can Animation
-var can_animation;
+var animationA;
 
 // Market Animation
-var market_animation;
+var animationB;
 
-// Page Indicator
-var activeIndicatorId = null;
+// Screenshot
+var currentScreenshot = null;
 
-// Screenshot Animation
-var screenshotPlaying = false;
-
-function ProgressBar(num_objects, on_increment, on_complete) {
-    this.num_objects = num_objects;
-    this.num_loaded_objects = 0;
+function ProgressBar(objectCount, onIncrement, onComplete) {
+    this.objectCount = objectCount;
+    this.loadedObjectCount = 0;
     this.progress = 0;
-    this.on_increment = on_increment;
-    this.on_complete = on_complete;
+    this.onIncrement = onIncrement;
+    this.onComplete = onComplete;
     this.increment = function() {
-        this.num_loaded_objects++;
-        this.progress = this.num_loaded_objects / this.num_objects;
-        this.on_increment(this.progress);
+        this.loadedObjectCount++;
+        this.progress = this.loadedObjectCount / this.objectCount;
+        this.onIncrement(this.progress);
         if (this.progress === 1)
-            this.on_complete();
+            this.onComplete();
     }
 }
 
@@ -35,405 +29,41 @@ function Animation(container, path, type, count, onLoad) {
     this.container = container;
     this.count = count;
     this.index = 0;
-    this.previous_index = 0;
+    this.previousIndex = 0;
+    this.timeline = [];
 
-    var frame_index = 1;
+    var frameIndex = 1;
     var progress = 0;
-    while (frame_index <= count) {
+    while (frameIndex <= count) {
         $(container).append('<img>');
-        var element = $(container + ' img:nth-child(' + frame_index + ')');
-        var image_file = path + frame_index + type;
+        var element = $(container + ' img:nth-child(' + frameIndex + ')');
+        var imageFile = path + frameIndex + type;
+        if (frameIndex > 1)
+            element.addClass('hidden');
+        element.load(onLoad).attr('src', imageFile);
 
-        if (frame_index > 1)
-            element.css('visibility', 'hidden');
-        element.load(onLoad).attr('src', image_file);
-
-        frame_index++;
+        frameIndex++;
     }
 
     this.gotoFrame = function(i) {
-        this.previous_index = this.index;
-        this.index = i;
-        if (this.index != this.previous_index) {
-            $(container + ' img:nth-child(' + (this.previous_index + 1) + ')').css('visibility', 'hidden');
-            $(container + ' img:nth-child(' + (this.index + 1) + ')').css('visibility', 'visible');
+        this.previousIndex = this.index;
+        this.index = Math.floor(i);
+        if (this.index != this.previousIndex) {
+            $(container + ' img:nth-child(' + (this.previousIndex + 1) + ')').toggleClass('hidden');
+            $(container + ' img:nth-child(' + (this.index + 1) + ')').toggleClass('hidden');
         }
+    };
+}
+
+function initSkrollrStuff() {
+    if ($('header').css('display') != 'none') {
+        skrollr.init();
     }
 }
 
-function initializeScrollMagic() {
-    controller = new ScrollMagic({
-        globalSceneOptions: {
-            triggerHook: 'onLeave'
-        }
-    });
-
-    /*******************
-     * Page Indicators *
-     *******************/
-    $('.page-indicator').mouseenter(function() {
-        var indicatorId = '#' + $(this).attr('id');
-        if (indicatorId != activeIndicatorId)
-            TweenMax.to(indicatorId, 0.5, {opacity: 0.8});
-
-        TweenMax.to(indicatorId + ' p', 0.5, {opacity: 1});
-    });
-
-    $('.page-indicator').mouseleave(function() {
-        var indicatorId = '#' + $(this).attr('id');
-        if (indicatorId != activeIndicatorId)
-            TweenMax.to($(indicatorId), 0.5, {opacity: 0.2});
-        
-        TweenMax.to(indicatorId + ' p', 0.5, {opacity: 0});
-    });
-
-    $(window).scroll(function() {
-        var pos = $(window).scrollTop();
-        if (pos > 0)
-            TweenMax.to('#navbar-bg', 0.5, {y: 100});
-        else
-            TweenMax.to('#navbar-bg', 0.5, {y: 0});
-    });
-
-    /********
-     * Home *
-     ********/
-    new TimelineMax()
-          .add(TweenMax.fromTo('#step1', 0.5, {y: '100', opacity: 0}, {y: '0', opacity: 1}))
-          .add(TweenMax.fromTo('#step2', 0.5, {y: '100', opacity: 0}, {y: '0', opacity: 1}))
-          .add(TweenMax.fromTo('#step3', 0.5, {y: '100', opacity: 0}, {y: '0', opacity: 1}))
-          .add(TweenMax.fromTo('#step4', 0.5, {y: '100', opacity: 0}, {y: '0', opacity: 1, onComplete: function() {
-                  var scene = new ScrollScene({triggerElement: '#pin', duration: 200, offset: 270})
-                                  .addTo(controller);
-                  var tween = new TimelineMax()
-                                  .add(TweenMax.fromTo('#step4', 1, {y: '0', opacity: 1}, {y: '100', opacity: 0}))
-                                  .add(TweenMax.fromTo('#step3', 1, {y: '0', opacity: 1}, {y: '100', opacity: 0}))
-                                  .add(TweenMax.fromTo('#step2', 1, {y: '0', opacity: 1}, {y: '100', opacity: 0}))
-                                  .add(TweenMax.fromTo('#step1', 1, {y: '0', opacity: 1}, {y: '100', opacity: 0}));
-                  scene.setTween(tween);
-          }}));
-  
-    scene = new ScrollScene({triggerElement: '#pin', duration: 600})
-                  .addTo(controller);
-    tween = new TimelineMax()
-                  .add([TweenMax.to('#animation-frames', 1, {y: -200}),
-                        TweenMax.to('#can-shadow-a', 0.5, {alpha: 0})])
-                  .add(TweenMax.to('#animation-frames', 1, {y: 0}));
-    scene.setTween(tween);
-    
-    new ScrollScene({triggerElement: '#pin', duration: 620})
-                    .addTo(controller)
-                    .on('progress', function(e) {
-                        can_animation.gotoFrame(Math.floor(e.progress * 15));
-                    })
-                    .on('enter', function(e) {
-                        TweenMax.to('#home-indicator', 0.5, {opacity: 1});
-                        activeIndicatorId = '#home-indicator';
-                    })
-                    .on('leave', function(e) {
-                        if (controller.scrollPos() >= 100)
-                            TweenMax.to('#home-indicator', 0.5, {opacity: 0.2});
-                    });
-
-    /*********
-     * About *
-     *********/
-    scene = new ScrollScene({triggerElement: '#pin', duration: 300, offset: 620})
-                    .setPin('#all')
-                    .addTo(controller)
-                    .on('enter', function(e) {
-                        TweenMax.to('#about-indicator', 0.5, {opacity: 1});
-                        activeIndicatorId = '#about-indicator';
-                    })
-                    .on('leave', function(e) {
-                        TweenMax.to('#about-indicator', 0.5, {opacity: 0.2});
-                    });
-    scene = new ScrollScene({triggerElement: '#pin', duration: 1100, offset: 450})
-                    .addTo(controller);
-    tween = new TimelineMax()
-            .add(TweenMax.fromTo('#can-shadow-b', 0.25, {alpha: 0}, {alpha: 1}))
-            .add(TweenMax.to('#can-shadow-b', 0.5, {alpha: 1}))
-            .add(TweenMax.to('#can-shadow-b', 0.1, {alpha: 0}));
-    scene.setTween(tween);
-
-    scene = new ScrollScene({triggerElement: '#pin', duration: 1400, offset: 450})
-                    .addTo(controller);
-    tween = new TimelineMax()
-            .add(TweenMax.fromTo('#about-content', 0.25, {x: -100, alpha: 0}, {x: 0, alpha: 1}))
-            .add(TweenMax.to('#about-content', 0.5, {x: 0, alpha: 1}))
-            .add(TweenMax.to('#about-content', 0.1, {x: -100, alpha: 0}));
-    scene.setTween(tween);
-    
-    /***********************
-     * Transition: Product *
-     ***********************/
-    scene = new ScrollScene({triggerElement: '#pin', duration: 5000, offset: 900, triggerHook: 'onEnter'})
-                    .addTo(controller);
-    tween = TweenMax.fromTo('#transition-product-text', 1, {y: 100}, {y: -900});
-    scene.setTween(tween);
-
-    scene = new ScrollScene({triggerElement: '#pin', duration: 200, offset: 1350, triggerHook: 'onEnter'})
-                    .addTo(controller);
-    tween = TweenMax.to('#transition-product-b', 1, {opacity: 0});
-    scene.setTween(tween);
-
-    /***********
-     * Product *
-     ***********/
-    scene = new ScrollScene({triggerElement: '#pin', duration: 1400, offset: 2050})
-                    .addTo(controller);
-    tween = new TimelineMax()
-                    .add(TweenMax.to('#can-shadow-c', 1, {opacity: 1}))
-                    .add(TweenMax.to('#can-shadow-c', 2, {opacity: 1}))
-                    .add(TweenMax.to('#can-shadow-c', 1, {opacity: 0}));
-    scene.setTween(tween);
-    
-    scene = new ScrollScene({triggerElement: '#pin', duration: 1400, offset: 2000})
-                    .addTo(controller)
-                    .on('enter', function(e) {
-                        TweenMax.to('#teensy', 1, {height: '505px'});
-                    })
-                    .on('leave', function(e) {
-                        TweenMax.to('#teensy', 1, {height: '0px'});
-                    });
-
-    scene = new ScrollScene({triggerElement: '#pin', duration: 1200, offset: 2200})
-                    .addTo(controller)
-                    .on('enter', function(e) {
-                        TweenMax.to('#bluetooth', 1, {height: '505px'});
-                    })
-                    .on('leave', function(e) {
-                        TweenMax.to('#bluetooth', 1, {height: '0px'});
-                    });
-
-    scene = new ScrollScene({triggerElement: '#pin', duration: 1000, offset: 2400})
-                    .addTo(controller)
-                    .on('enter', function(e) {
-                        TweenMax.fromTo('#sdcard', 1,
-                                        {height: '0px', y: '505', backgroundPosition: '0px -505px'},
-                                        {height: '505px', y: '0', backgroundPosition: '0px 0px'});
-                    })
-                    .on('leave', function(e) {
-                        TweenMax.fromTo('#sdcard', 1,
-                                        {height: '505px', y: '0', backgroundPosition: '0px 0px'},
-                                        {height: '0px', y: '505', backgroundPosition: '0px -505px'});
-                    });
-
-    scene = new ScrollScene({triggerElement: '#pin', duration: 800, offset: 2600})
-                    .addTo(controller)
-                    .on('enter', function(e) {
-                        TweenMax.fromTo('#lipo', 1,
-                                        {height: '0px', y: '505', backgroundPosition: '0px -505px'},
-                                        {height: '505px', y: '0', backgroundPosition: '0px 0px'});
-                    })
-                    .on('leave', function(e) {
-                        TweenMax.fromTo('#lipo', 1,
-                                        {height: '505px', y: '0', backgroundPosition: '0px 0px'},
-                                        {height: '0px', y: '505', backgroundPosition: '0px -505px'});
-                    });
-
-    scene = new ScrollScene({triggerElement: '#pin', duration: 600, offset: 2800})
-                    .addTo(controller)
-                    .on('enter', function(e) {
-                        TweenMax.fromTo('#charger', 1,
-                                        {height: '0px', y: '505', backgroundPosition: '0px -505px'},
-                                        {height: '505px', y: '0', backgroundPosition: '0px 0px'});
-                    })
-                    .on('leave', function(e) {
-                        TweenMax.fromTo('#charger', 1,
-                                        {height: '505px', y: '0', backgroundPosition: '0px 0px'},
-                                        {height: '0px', y: '505', backgroundPosition: '0px -505px'});
-                    });
-
-    new ScrollScene({triggerElement: '#pin', duration: 1020, offset: 2200})
-                    .setPin('#all')
-                    .addTo(controller)
-                    .on('enter', function(e) {
-                        TweenMax.to('#product-indicator', 0.5, {opacity: 1});
-                        activeIndicatorId = '#product-indicator';
-                    })
-                    .on('leave', function(e) {
-                        TweenMax.to('#product-indicator', 0.5, {opacity: 0.2});
-                    });
-
-    scene = new ScrollScene({triggerElement: '#pin', duration: 2000, offset: 2000})
-                    .addTo(controller);
-    tween = new TimelineMax()
-                    .add(TweenMax.fromTo('#product-content', 0.25, {x: -100, opacity: 0}, {x: 0, opacity: 1}))
-                    .add(TweenMax.to('#product-content', 0.5, {x: 0, opacity: 1}))
-                    .add(TweenMax.to('#product-content', 0.1, {x: -100, opacity: 0}));
-    scene.setTween(tween);
-
-    new ScrollScene({triggerElement: '#pin', duration: 620, offset: 1700})
-                    .addTo(controller)
-                    .on('progress', function(e) {
-                        can_animation.gotoFrame(15 + Math.floor(e.progress * 25));
-                    });
-
-    /**********************
-     * Transition: App    *
-     **********************/
-    scene = new ScrollScene({triggerElement: '#pin', duration: 1500, offset: 3250, triggerHook: 'onEnter'})
-                    .addTo(controller);
-    tween = TweenMax.to('#transition-app', 1, {backgroundPosition: '-2800px 0px'});
-    scene.setTween(tween);
-
-    /*******
-     * App *
-     *******/
-    new ScrollScene({triggerElement: '#app', duration: 620})
-                    .setPin('#app', {pushFollowers: false})
-                    .addTo(controller)
-                    .on('enter', function(e) {
-                        TweenMax.to('#app-indicator', 0.5, {opacity: 1});
-                        activeIndicatorId = '#app-indicator';
-                    })
-                    .on('leave', function(e) {
-                        TweenMax.to('#app-indicator', 0.5, {opacity: 0.2});
-                    });
-    scene = new ScrollScene({triggerElement: '#pin', duration: 620, offset: 3800})
-                    .addTo(controller)
-                    .on('progress', function(e) {
-                        can_animation.gotoFrame(40 + Math.floor(e.progress * 62));
-                    });
-   
-    scene = new ScrollScene({triggerElement: '#pin', duration: 1300, offset: 4050})
-                    .addTo(controller);
-    tween = new TimelineMax()
-                    .add(TweenMax.fromTo('#app-content', 1, {x: -100, opacity: 0}, {x: 0, opacity: 1}))
-                    .add(TweenMax.to('#app-content', 3, {alpha: 1}))
-                    .add(TweenMax.to('#app-content', 1, {alpha: 0}));
-    scene.setTween(tween);
-
-    scene = new ScrollScene({triggerElement: '#pin', duration: 1000, offset: 4300, triggerHook: 'onEnter'})
-                    .addTo(controller);
-    tween = new TimelineMax()
-                    .add(TweenMax.to('#can-shadow-d', 1, {opacity: 1}))
-                    .add(TweenMax.to('#can-shadow-d', 2, {opacity: 1}))
-                    .add(TweenMax.to('#can-shadow-d', 1, {opacity: 0}));
-    scene.setTween(tween);
-    
-    /**********************
-     * Transition: Market *
-     **********************/
-    scene = new ScrollScene({triggerElement: '#pin', duration: 500, offset: 4000, triggerHook: 'onEnter'})
-                    .addTo(controller)
-                    .on('enter', function(e) {
-                        $('html, body').css('background', '#222');
-                    });
-    tween = TweenMax.fromTo('#transition-market-a', 1, {opacity: 0}, {opacity: 1});
-    scene.setTween(tween);
-    
-    scene = new ScrollScene({triggerElement: '#pin', duration: 250, offset: 4800, triggerHook: 'onEnter'})
-                    .addTo(controller);
-    tween = TweenMax.to('#transition-market-b', 1, {opacity: 0});
-    scene.setTween(tween);
-
-    scene = new ScrollScene({triggerElement: '#pin', duration: 250, offset: 4800, triggerHook: 'onEnter'})
-                    .addTo(controller)
-                    .on('progress', function(e) {
-                        market_animation.gotoFrame(Math.floor(e.progress * 9));
-                    });
-     
-    /**********
-     * Market *
-     **********/
-    new ScrollScene({triggerElement: '#market', duration: 2480})
-                    .setPin('#market')
-                    .addTo(controller)
-                    .on('enter', function(e) {
-                        TweenMax.to('#market-indicator', 0.5, {opacity: 1});
-                        activeIndicatorId = '#market-indicator';
-
-                        $('html, body').css('background', '#222');
-                    })
-                    .on('leave', function(e) {
-                        TweenMax.to('#market-indicator', 0.5, {opacity: 0.2});
-                    });
-    
-    scene = new ScrollScene({triggerElement: '#pin', duration: 1000, offset: 5900, triggerHook: 'onEnter'})
-                    .addTo(controller);
-    tween = new TimelineMax()
-                    .add(TweenMax.fromTo('#can-shadow-e', 1, {opacity: 0}, {opacity: 1}))
-                    .add(TweenMax.to('#can-shadow-e', 2, {opacity: 1}))
-    scene.setTween(tween);
-
-    new ScrollScene({triggerElement: '#pin', duration: 620, offset: 5300, triggerHook: 'onEnter'})
-                    .addTo(controller)
-                    .on('progress', function(e) {
-                        can_animation.gotoFrame(103 + Math.floor(e.progress * 13));
-
-                        /* Handle Screenshots */
-                        if (screenshotPlaying === false && e.progress === 1) {
-                            $('#screenshots').css('visibility', 'visible');
-                            screenshotPlaying = true;
-                        } else if (screenshotPlaying === true && e.progress < 1) {
-                            $('#screenshots').css('visibility', 'hidden');
-                            screenshotPlaying = false;
-                        }
-                    });
-
-    scene = new ScrollScene({triggerElement: '#pin', duration: 1500, offset: 6500, triggerHook: 'onEnter'})
-                    .addTo(controller)
-                    .on('enter', function(e) {
-                        TweenMax.to('#screen2', 0.5, {marginLeft: 0, ease: Elastic.easeOut});
-                        TweenMax.to('#market-label-1', 0.5, {x: 100, opacity: 1, ease: Elastic.easeOut});
-
-                    })
-                    .on('leave', function(e) {
-                        if ($(window).scrollTop() > 6910)
-                            return;
-                        TweenMax.to('#screen2', 0.5, {marginLeft: 296, ease: Elastic.easeIn});
-                        TweenMax.to('#market-label-1', 0.5, {x: 0, opacity: 0, ease: Elastic.easeIn});
-                    });
-    scene = new ScrollScene({triggerElement: '#pin', duration: 500, offset: 7000, triggerHook: 'onEnter'})
-                    .addTo(controller)
-                    .on('enter', function(e) {
-                        TweenMax.to('#screen2', 0.5, {marginLeft: 0, ease: Elastic.easeOut});
-                        TweenMax.to('#market-label-1', 0.5, {x: 100, opacity: 1, ease: Elastic.easeOut});
-                        TweenMax.to('#screen3', 0.5, {marginLeft: 0, ease: Elastic.easeOut});
-                        TweenMax.to('#market-label-2', 0.5, {x: 100, opacity: 1, ease: Elastic.easeOut});
-                    })
-                    .on('leave', function(e) {
-                        if ($(window).scrollTop() > 7260)
-                            return;
-                        TweenMax.to('#screen3', 0.5, {marginLeft: 296, ease: Elastic.easeIn});
-                        TweenMax.to('#market-label-2', 0.5, {x: 0, opacity: 0, ease: Elastic.easeIn});
-                    });
-    scene = new ScrollScene({triggerElement: '#pin', duration: 500, offset: 7500, triggerHook: 'onEnter'})
-                    .addTo(controller)
-                    .on('enter', function(e) {
-                        TweenMax.to('#screen2', 0.5, {marginLeft: 0, ease: Elastic.easeOut});
-                        TweenMax.to('#market-label-1', 0.5, {x: 100, opacity: 1, ease: Elastic.easeOut});
-                        TweenMax.to('#screen3', 0.5, {marginLeft: 0, ease: Elastic.easeOut});
-                        TweenMax.to('#market-label-2', 0.5, {x: 100, opacity: 1, ease: Elastic.easeOut});
-                        TweenMax.to('#screen4', 0.5, {marginLeft: 0, ease: Elastic.easeOut});
-                        TweenMax.to('#market-label-3', 0.5, {x: 100, opacity: 1, ease: Elastic.easeOut});
-                    })
-                    .on('leave', function(e) {
-                        if ($(window).scrollTop() > 7610)
-                            return;
-                        TweenMax.to('#screen4', 0.5, {marginLeft: 296, ease: Elastic.easeIn});
-                        TweenMax.to('#market-label-3', 0.5, {x: 0, opacity: 0, ease: Elastic.easeIn});
-                    });
-
-    /* ScrollToPlugin stuff */
-    $(document).on('click', 'a[href^=#]', function (e) {
-                var id = $(this).attr('href'), $elem = $(id);
-                if ($elem.length > 0) {
-                    var delta = Math.abs($elem.offset().top - $(window).scrollTop());
-                    e.preventDefault();
-                    TweenMax.to(window, 5 * (delta / $(document).height()), {scrollTo: {y: $elem.offset().top}});
-                    if (window.history && window.history.pushState) {
-                        // if supported by the browser we can even update the URL.
-                        history.pushState('', document.title, id);
-                    }
-                }
-            });
-}
-
-$(document).ready(function() {
-    progress_bar = new ProgressBar(
+function initOtherStuff() {
+    // Loading Screen
+    progressBar = new ProgressBar(
             127,
             function(progress) {
                 $('#progress p').html("" + Math.round(progress * 100) + "%");
@@ -441,27 +71,138 @@ $(document).ready(function() {
             },
             function() {
                 $('#loading-screen').fadeOut(1000);
-                initializeScrollMagic();
             }
     );
 
-    can_animation = new Animation(
-            '#animation-frames',
+    // Animation A
+    animationA = new Animation(
+            '#animation-a',
             'images/animations/',
             '.png',
             117,
             function() {
-                progress_bar.increment();
+                progressBar.increment();
             }
     );
 
-    market_animation = new Animation(
-            '#market-animation-frames',
+    // Animation B
+    animationB = new Animation(
+            '#animation-b',
             'images/transitions/market/',
             '.png',
             10,
             function() {
-                progress_bar.increment();
+                progressBar.increment();
             }
     );
+    
+    $('#screen-label-1')
+        .hover(function() {
+            TweenMax.to('#screen-2', 0.4, {backgroundPosition: '0px 0px'});
+            $('#screen-2').addClass('layer1');
+        }, function() {
+            TweenMax.to('#screen-2', 0.4, {backgroundPosition: '-300px 0px'});
+            $('#screen-2').removeClass('layer1');
+        });
+        
+        
+    $('#screen-label-2')
+        .hover(function() {
+            TweenMax.to('#screen-3', 0.4, {backgroundPosition: '0px 0px'});
+            $('#screen-3').addClass('layer1');
+        }, function() {
+            TweenMax.to('#screen-3', 0.4, {backgroundPosition: '-300px 0px'});
+            $('#screen-3').removeClass('layer1');
+        });
+        
+        
+    $('#screen-label-3')
+        .hover(function() {
+            TweenMax.to('#screen-4', 0.4, {backgroundPosition: '0px 0px'});
+            $('#screen-4').addClass('layer1');
+        }, function() {
+            TweenMax.to('#screen-4', 0.4, {backgroundPosition: '-300px 0px'});
+            $('#screen-4').removeClass('layer1');
+        });
+    
+    var clamp = function(v, a, b) {
+        if (v < a) {
+            v = a;
+        } else if (v > b) {
+            v = b;
+        }
+        return v;
+    }
+    
+    var map = function(v, minA, maxA, minB, maxB) {
+        v = clamp(v, minA, maxA);
+        return ((v - minA) / (maxA - minA)) * (maxB - minB) + minB;
+    };
+    
+    $(window).scroll(function() {
+        var pos = $(window).scrollTop();
+        
+        // Can Animation
+        if (pos < 1240) {
+            animationA.gotoFrame(map(pos, 0, 620, 0, 15));
+        } else if (pos < 2480) {
+            animationA.gotoFrame(map(pos, 1240, 1860, 15, 40));
+        } else if (pos < 3620) {
+            animationA.gotoFrame(map(pos, 2480, 3000, 40, 102));
+        } else if (pos < 4860) {
+            animationA.gotoFrame(map(pos, 3620, 4240, 103, 116));
+        }
+        
+        var pos2 = clamp(pos, 3620, 3930);
+        animationB.gotoFrame(map(pos2, 3620, 3930, 0, 9));
+        
+        // Header
+        if (pos > 0) {
+            TweenMax.to('#main-header', 0.4, {backgroundColor: 'rgba(255, 255, 255, 1)'});
+            TweenMax.to('#main-header a', 0.4, {color: 'rgb(0, 0, 0)'});
+            TweenMax.to('#logo_dark', 0.4, {opacity: '1'});
+            TweenMax.to('#logo', 0.4, {opacity: '0'});
+        } else {
+            $('#main-header').finish();
+            TweenMax.to('#main-header', 0.4, {backgroundColor: 'rgba(0, 0, 0, 0)'});
+            TweenMax.to('#main-header a', 0.4, {color: 'rgb(255, 255, 255)'});
+            TweenMax.to('#logo_dark', 0.4, {opacity: '0'});
+            TweenMax.to('#logo', 0.4, {opacity: '1'});
+        }
+        
+        if (pos >= 4240) {
+            $('#screens').css('display', 'block');
+        } else {
+            $('#screens').css('display', 'none');
+            if (pos < 3620) {
+                $('body').css('background', '#f3f3f3');
+            } else {
+                $('body').css('background', '#222');
+            }
+        }
+    });
+}
+
+function initMediaQueryStuff() {
+    $(window).resize(function() {
+        if ($('header').css('display') == "none") {
+            var s = skrollr.get();
+            if (s != undefined) {
+                s.destroy();
+                console.log('skrollr destroyed');
+            }
+        } else {
+            var s = skrollr.get();
+            if (s == undefined) {
+                s = skrollr.init();
+                console.log('skrollr initialized');
+            }
+        }
+    });
+}
+
+$(document).ready(function() {
+    initSkrollrStuff();
+    initOtherStuff();
+    initMediaQueryStuff();
 });
