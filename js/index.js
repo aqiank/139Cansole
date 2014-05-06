@@ -56,7 +56,7 @@ function Animation(container, path, type, count, onLoad) {
 }
 
 function initSkrollrStuff() {
-    if ($('header').css('display') != 'none') {
+    if ($('.desktop').css('display') != 'none') {
         skrollr.init();
     }
 }
@@ -185,7 +185,7 @@ function initOtherStuff() {
 
 function initMediaQueryStuff() {
     $(window).resize(function() {
-        if ($('header').css('display') == "none") {
+        if ($('.desktop').css('display') == "none") {
             var s = skrollr.get();
             if (s != undefined) {
                 s.destroy();

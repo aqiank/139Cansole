@@ -77,6 +77,10 @@ a {
     position: fixed;
 }
 
+.desktop {
+    display: block;
+}
+
 .no-pointer-events {
     pointer-events: none;
 }
@@ -732,17 +736,9 @@ a {
     .text-wrapper {
         top: 33%;
     }
-    
-    #screens {
-        display: none;
-    }
 }
 
 @media only screen and (min-width: 480px) and (max-width: 760px) {
-    header {
-        display: none;
-    }
-
     h1 {
        font-size: 28px
     }
@@ -755,25 +751,17 @@ a {
         position: relative;
     }
 
+    .desktop {
+        display: none;
+    }
+
     .text-wrapper {
         top: 5%;
         right: 1%;
     }
-    
-    .fixed {
-        display: none;
-    }
-    
-    #loading-screen {
-        display: none;
-    }
 
     .can {
         display: block;
-    }
-    
-    #screens {
-        display: none;
     }
 
     #home-can {
@@ -781,7 +769,7 @@ a {
     }
 
     #step-wrapper {
-        width: 384px;
+        max-width: 384px;
         margin: 0 auto;
     }
 
@@ -795,12 +783,8 @@ a {
     }
 
     #product .text-wrapper {
-       top: 5%;
+       top: 12%;
        right: 0%;
-    }
-    
-    #animation-b {
-        display: none;
     }
 
     #coming-text-wrapper {
@@ -816,17 +800,9 @@ a {
         right: 0%;
         
     }
-    
-    .screen-description {
-        display: none;
-    }
 }
 
 @media only screen and (max-width: 480px) {
-    header {
-        display: none;
-    }
-
     h1 {
        font-size: 24px
     }
@@ -839,25 +815,17 @@ a {
         position: relative;
     }
 
+    .desktop {
+        display: none;
+    }
+
     .text-wrapper {
         top: 5%;
         right: 1%;
     }
-
-    .fixed {
-        display: none;
-    }
-    
-    #loading-screen {
-        display: none;
-    }
     
     .can {
         display: block;
-    }
-    
-    #screens {
-        display: none;
     }
 
     #home-can {
@@ -865,7 +833,7 @@ a {
     }
 
     #step-wrapper {
-        width: 384px;
+        max-width: 384px;
         margin: 0 auto;
     }
 
@@ -878,13 +846,9 @@ a {
     }
 
     #product .text-wrapper {
-       top: 5%; 
+       top: 12%;
     }
     
-    #animation-b {
-        display: none;
-    }
-
     #coming-text-wrapper {
         top: 10%;
         right: 1%;
@@ -895,9 +859,5 @@ a {
         top: 60%;
         left: 0%;
         right: 0%;
-    }
-    
-    .screen-description {
-        display: none;
     }
 }
