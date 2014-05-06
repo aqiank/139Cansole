@@ -21,7 +21,7 @@ html, body {
  *****************/
 h1, h2, h3, h4, h5, h6, p, li {
 	font-family: 'Cabin';
-   color: #222;
+    color: #222;
 }
 
 h1 {
@@ -59,7 +59,7 @@ a {
 }
 
 .content {
-    position: relative;
+    position: relative; 
     max-width: 960px;
     height: 620px;
     margin: 0 auto;
@@ -722,11 +722,11 @@ a {
 
 @media only screen and (min-width: 760px) and (max-width: 960px) {
     h1 {
-       font-size: 30px
+       font-size: 28px
     }
 
-    #animation-a img, #can-shadow-a {
-        right: 10%;
+    #animation-a img, #can-shadow-a, #can-shadow-b, #can-shadow-c, #can-shadow-d, #can-shadow-e {
+        right: 2%;
     }
 
     .text-wrapper {
