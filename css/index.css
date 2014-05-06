@@ -216,7 +216,6 @@ a {
     height: 32px;
     padding: 16px 0;
     background: rgba(0, 0, 0, 0);
-    z-index: 1000;
 }
 
 #main-nav {
@@ -254,7 +253,6 @@ a {
     position: fixed;
     top: 50%;
     right: 16px;
-    z-index: 1000;
     margin: -96px 0 0 0;
 }
 
