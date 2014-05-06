@@ -607,8 +607,7 @@ a {
  **********/
 
 #market {
-   background: url('../images/bg/market.jpg') no-repeat;
-   background-size: cover;
+   background: #f3f3f3;
 }
 
 #market-can {
