@@ -131,6 +131,10 @@ a {
     clear: both;
 }
 
+.transparent {
+    opacity: 0
+}
+
 .can {
     display: none;
 }

@@ -39,7 +39,7 @@ function Animation(container, path, type, count, onLoad) {
         var element = $(container + ' img:nth-child(' + frameIndex + ')');
         var imageFile = path + frameIndex + type;
         if (frameIndex > 1)
-            element.addClass('hidden');
+            element.addClass('transparent');
         element.load(onLoad).attr('src', imageFile);
 
         frameIndex++;
@@ -49,8 +49,8 @@ function Animation(container, path, type, count, onLoad) {
         this.previousIndex = this.index;
         this.index = Math.floor(i);
         if (this.index != this.previousIndex) {
-            $(container + ' img:nth-child(' + (this.previousIndex + 1) + ')').toggleClass('hidden');
-            $(container + ' img:nth-child(' + (this.index + 1) + ')').toggleClass('hidden');
+            $(container + ' img:nth-child(' + (this.previousIndex + 1) + ')').toggleClass('transparent');
+            $(container + ' img:nth-child(' + (this.index + 1) + ')').toggleClass('transparent');
         }
     };
 }
